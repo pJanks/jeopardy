@@ -15,3 +15,5 @@ class Clue {
     }
   }
 }
+
+export default Clue;
