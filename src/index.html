@@ -1,13 +1,42 @@
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
-    <title>Jeopardy</title>
+    <title>Star Wars Jeopardy</title>
   </head>
   <body>
-    <h1>Jeopardy</h1>
+    <section class="top">
+      <button type="button" class="leader-board-button">LEADER BOARD</button>
+      <h1>Star Wars Jeopardy</h1>
+      <button type="button" class="new-game-button">NEW GAME</button>
+    </section>
 
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
+    <section class="middle">
+      <div class="left-column"></div>
+      <div class="game-board"></div>
+      <div class="right-column"></div>
+    </section>
 
-    <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
+    <section class="bottom hidden">
+      <div class="player-1-container">
+        <h2 class="player-1-name">Player 1</h2>
+        <h3 class="player-1-score">score: 800</h3>
+      </div>
+      <div class="player-2-container">
+        <h2 class="player-2-name">Player 2</h2>
+        <h3 class="player-2-score">score: 300</h3>
+      </div>
+      <div class="player-3-container">
+        <h2 class="player-3-name">Player 3</h2>
+        <h3 class="player-3-score">score: 700</h3>
+      </div>
+    </section>
+
+    <section class="intro-container">
+      <input type="text" class="player-inputs" placeholder="Player 1 Name">
+      <input type="text" class="player-inputs" placeholder="Player 2 Name">
+      <input type="text" class="player-inputs" placeholder="Player 3 Name">
+      <button type="button" class="start-game-button">START GAME</button>
+    </section>
+
   </body>
 </html>
