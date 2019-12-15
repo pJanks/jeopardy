@@ -2,6 +2,7 @@
 $primary-background: pink;
 * {
   margin: 0;
+  font-family: Arial Black;
 }
 
 body {
@@ -13,24 +14,50 @@ body {
 }
 
 h1 {
+  overflow: auto;
   color: white;
   text-align: center;
-  font-size: 300%;
+  font-size: 250%;
 }
 
 h2 {
+  overflow: auto;
   color: white;
-  font-size: 200%;
+  font-size: 120%;
 }
 
 h3 {
+  overflow: auto;
   color: white;
-  font-size: 100%;
+  font-size: 120%;
+}
+
+p {
+  overflow: auto;
+  text-align: center;
+  color: white;
+  font-size: 120%;
 }
 
 .top {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   border: 3px solid red;
   height: 20vh;
+}
+
+.leader-board-button,
+.new-game-button {
+  height: 50px;
+  width: 10%;
+  border-radius: 10px;
+  font-size: 100%;
+}
+
+.leader-board-button:hover,
+.new-game-button:hover {
+  cursor: pointer;
 }
 
 .middle {
@@ -50,6 +77,16 @@ h3 {
     "c h m r"
     "d i n s"
     "e j o t";
+}
+
+.board {
+  padding: 13%;
+  overflow: auto;
+}
+
+.board:hover {
+  background-color: rgba(80, 78, 255, 0.3);
+  cursor: pointer;
 }
 
 .left-column,
