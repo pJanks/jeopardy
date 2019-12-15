@@ -1,6 +1,146 @@
 /* This is an example of using Sass, otherwise plain CSS works too*/
 $primary-background: pink;
+* {
+  margin: 0;
+}
 
 body {
-  background-color: $primary-background;
+  background-image: url(../images/space_background_2.jpg);
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+h1 {
+  color: white;
+  text-align: center;
+  font-size: 300%;
+}
+
+h2 {
+  color: white;
+  font-size: 200%;
+}
+
+h3 {
+  color: white;
+  font-size: 100%;
+}
+
+.top {
+  border: 3px solid red;
+  height: 20vh;
+}
+
+.middle {
+  display: flex;
+  border: 3px solid green;
+  height: 60vh;
+}
+
+.game-board {
+  width: 60%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "a f k p"
+    "b g l q"
+    "c h m r"
+    "d i n s"
+    "e j o t";
+}
+
+.left-column,
+.right-column {
+  width: 20%;
+  border: 3px solid blue;
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-around;
+  border: 3px solid yellow;
+  height: 20vh;
+}
+
+.a1 {
+  grid-area: a;
+}
+
+.a2 {
+  grid-area: b;
+}
+
+.a3 {
+  grid-area: c;
+}
+
+.a4 {
+  grid-area: d;
+}
+
+.a5 {
+  grid-area: e;
+}
+
+.b1 {
+  grid-area: f;
+}
+
+.b2 {
+  grid-area: g;
+}
+
+.b3 {
+  grid-area: h;
+}
+
+.b4 {
+  grid-area: i;
+}
+
+.b5 {
+  grid-area: j;
+}
+
+.c1 {
+  grid-area: k;
+}
+
+.c2 {
+  grid-area: l;
+}
+
+.c3 {
+  grid-area: m;
+}
+
+.c4 {
+  grid-area: n;
+}
+
+.c5 {
+  grid-area: o;
+}
+
+.d1 {
+  grid-area: p;
+}
+
+.d2 {
+  grid-area: q;
+}
+
+.d3 {
+  grid-area: r;
+}
+
+.d4 {
+  grid-area: s;
+}
+
+.d5 {
+  grid-area: t;
 }
