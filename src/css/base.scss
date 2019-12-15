@@ -39,6 +39,37 @@ p {
   font-size: 120%;
 }
 
+.intro-container {
+  background-image: url(../images/baby_yoda.png);
+  background-size: cover;
+  position: absolute;
+  top: 20%;
+  left: 15%;
+  bottom: 18%;
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.player-inputs,
+.start-game-button {
+  width: 30%;
+  height: 60px;
+  margin: 1%;
+  border-radius: 10px;
+  font-size: 100%;
+  text-align: center;
+  opacity: .6;
+}
+
+.start-game-button:hover {
+  background-color: #35FFF0;
+  cursor: pointer;
+}
+
+
 .top {
   display: flex;
   justify-content: space-around;
@@ -87,6 +118,12 @@ p {
 .board:hover {
   background-color: rgba(80, 78, 255, 0.3);
   cursor: pointer;
+}
+
+.a1:hover, .b1:hover,
+.c1:hover, .d1:hover {
+  cursor: default;
+  background-color:inherit;
 }
 
 .left-column,
@@ -180,4 +217,8 @@ p {
 
 .d5 {
   grid-area: t;
+}
+
+.hidden {
+  display: none;
 }
