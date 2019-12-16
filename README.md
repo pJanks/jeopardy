@@ -1,7 +1,7 @@
-# South Park Jeopardy
+# Star Wars Jeopardy
 a Jeopardy game with a South Park theme
 
-- link to live page: https://pjanks.github.io/jeopardy/
+- link to live page: https://pjanks.github.io/jeopardy
 
 - link to DTR gist: https://gist.github.com/ZaneMeroff/7052f8f87f4b51bdddb8ed8161b2b04a
 
