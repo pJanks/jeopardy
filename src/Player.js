@@ -8,3 +8,5 @@ class Player {
     this.score += value;
   }
 }
+
+export default Player;
