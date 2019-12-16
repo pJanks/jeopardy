@@ -4,8 +4,6 @@ import Player from './Player.js'
 import Round from './Round.js'
 import Clue from './Clue.js'
 
-
-
 const domUpdates = {
   printSingleQuestion: () => {
     $('.game-board').html(`
@@ -22,14 +20,27 @@ const domUpdates = {
   displayQuestionScreen: e => {
     if ($(e.target).hasClass('number')) {
       $('.game-board').text('')
-      // console.log(domUpdates.printSingleQuestion);
-      domUpdates.printSingleQuestion()
+      domUpdates.printSingleQuestion();
     }
   },
 
+  shuffle: () => {
+    let nums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+    var j, x, i;
+    for (i = nums.length - 1; i > 0; i--) {
+        j = Math.floor(Math.random() * (i + 1));
+        x = nums[i];
+        nums[i] = nums[j];
+        nums[j] = x;
+    }
+    return nums;
+  },
+
   startGame: dataInfo => {
-    const game = new Game(dataInfo.categories, dataInfo.clues);
-    console.log(game);
+    let nums = domUpdates.shuffle();
+    const game = new Game(dataInfo.categories, dataInfo.clues, nums);
+    const round1Nums = game.randomNumbers.splice(0, 4);
+    const round1 = new Round(round1Nums, game.roundNumber)
     game.instanstiatePlayers($('.player1-input').val(), $('.player2-input').val(), $('.player3-input').val());
     $('.intro-container').addClass('hidden');
     $('.bottom').removeClass('hidden');
