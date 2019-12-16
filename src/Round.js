@@ -6,6 +6,8 @@ class Round {
   }
 
   assignDailyDouble() {
-    
+
   }
 }
+
+export default Round;
