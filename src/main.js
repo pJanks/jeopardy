@@ -1,5 +1,7 @@
+import $ from 'jquery'
+
 const printSingleQuestion = () => {
-  document.querySelector('.game-board').insertAdjacentHTML('afterbegin', `
+  $('.game-board').html(`
   <div class="question-area">
     <p class="question">What Sonya Fitzpatrick is, or the Animal Planet series on which she communicates with animals telepathically</p>
     <button type="button" class="answer-button answer-a">Lone Star Law</button>
@@ -11,9 +13,9 @@ const printSingleQuestion = () => {
 }
 
 const startGame = () => {
-  document.querySelector('.intro-container').classList.add('hidden');
-  document.querySelector('.bottom').classList.remove('hidden');
-  document.querySelector('.game-board').insertAdjacentHTML('afterbegin', `
+  $('.intro-container').addClass('hidden');
+  $('.bottom').removeClass('hidden');
+  $('.game-board').html(`
   <div class="board a1"><p>Catagory 1</p></div>
   <div class="board a2"><p class="number">100</p></div>
   <div class="board a3"><p class="number">200</p></div>
@@ -37,12 +39,12 @@ const startGame = () => {
 }
 
 const displayQuestionScreen = e => {
-  if (e.target.classList.contains('number')) {
-    document.querySelector('.game-board').innerText = '';
+  if ($(e.target).hasClass('number')) {
+    $('.game-board').text('')
     printSingleQuestion();
   }
 }
 
 // Event Listeners
-document.querySelector('.start-game-button').addEventListener('click', startGame)
-document.querySelector('.game-board').addEventListener('click', displayQuestionScreen)
+$('.start-game-button').click(startGame)
+$('.game-board').click(displayQuestionScreen)
