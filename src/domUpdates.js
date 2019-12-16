@@ -1,5 +1,10 @@
 import $ from 'jquery';
 import Game from './Game.js';
+import Player from './Player.js'
+import Round from './Round.js'
+import Clue from './Clue.js'
+
+
 
 const domUpdates = {
   printSingleQuestion: () => {
