@@ -1,7 +1,7 @@
 import Player from './Player.js'
 
 class Game {
-  constructor(categories, clues) {
+  constructor(categories, clues, randomNumbers) {
     this.gameCategories = categories;
     this.roundNumber = 1;
     this.players = [];
@@ -9,6 +9,7 @@ class Game {
     this.allClues = clues;
     this.currentPlayer = 0;
     this.cluesRemaining = 16;
+    this.randomNumbers = randomNumbers;
   }
 
   instanstiatePlayers(playerOne, playerTwo, playerThree) {
