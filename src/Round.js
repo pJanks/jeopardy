@@ -1,4 +1,6 @@
 class Round {
+  constructor() {
+
   constructor(categories, dailyDoubleCount) {
     this.categories = categories;
     this.clues = [];
@@ -7,7 +9,9 @@ class Round {
 
   assignDailyDouble() {
 
+
   }
 }
 
 export default Round;
+
