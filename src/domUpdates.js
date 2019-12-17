@@ -4,8 +4,7 @@ import Player from './Player.js'
 import Round from './Round.js'
 import Clue from './Clue.js'
 
-let game;
-let round1;
+let game, round1;
 
 const domUpdates = {
   printSingleQuestion: () => {
@@ -17,19 +16,19 @@ const domUpdates = {
       <button type="button" class="answer-button answer-c">The Pet Psychic</button>
       <button type="button" class="answer-button answer-d">Tanked</button>
       <button type="button" class="answer-button answer-e">My Cat from HELL</button>
-    </div>`)
+    </div>`);
   },
 
   displayQuestionScreen: e => {
     if ($(e.target).hasClass('number')) {
-      $('.game-board').text('')
+      $('.game-board').text('');
       domUpdates.printSingleQuestion();
     }
   },
 
   shuffle: () => {
     let nums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-    var j, x, i;
+    let j, x, i;
     for (i = nums.length - 1; i > 0; i--) {
         j = Math.floor(Math.random() * (i + 1));
         x = nums[i];
@@ -77,7 +76,6 @@ const domUpdates = {
     domUpdates.assignRoundCategories();
   },
 
-
   assignRoundCategories: () => {
     let keys = Object.keys(game.gameCategories)
     $('.a1').text((keys[round1.categories[0]]).split(/(?=[A-Z])/).join(' ').toUpperCase())
@@ -86,7 +84,8 @@ const domUpdates = {
     $('.d1').text((keys[round1.categories[3]]).split(/(?=[A-Z])/).join(' ').toUpperCase())
   },
 
-
 }
+
+  // when a box is clicked, find the cla
 
 export default domUpdates;
