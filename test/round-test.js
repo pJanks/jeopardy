@@ -9,7 +9,7 @@ beforeEach(() => {
   rounds = new Round();
 })
 
-describe ('Users', () => {
+describe ('Round', () => {
 
   it('should be a function', () => {
     expect(Round).to.be.a('function');

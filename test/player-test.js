@@ -3,13 +3,13 @@ const expect = chai.expect;
 let players;
 
 const Player = require("../src/Player");
-const playerData = require("../data/users");
+// const playerData = require("../data/players");
 
 beforeEach(() => {
   players = new Player(playerData[0]);
 })
 
-describe ('Users', () => {
+describe ('Player', () => {
 
   it('should be a function', () => {
     expect(Player).to.be.a('function');
