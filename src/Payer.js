@@ -1,9 +1,8 @@
 class Player {
-  constructor() {
-
+  constructor(name, answer) {
+    this.name = name;
+    this.answer = answer;
   }
 }
 
-if (typeof module !== 'undefined') {
-  module.exports = Player;
-}
+export default Game;
