@@ -11,11 +11,20 @@ beforeEach(() => {
 
 describe ('Game', () => {
 
-  it('should be a function', () => {
+  it.skip('should be a function', () => {
     expect(Game).to.be.a('function');
   })
 
-  it('should be an instance of a User', () => {
+  it.skip('should be an instance of a Game', () => {
     expect(games).to.be.an.instanceof(Game);
   })
+
+  it.skip('should be have game categories', () => {
+    expect(game.gameCategories).to.eqaul(categoriesData[0].gameCategories);
+  })
+
+  it.skip('should begin round 1 when players are instantiated', () => {
+    expect(game.gameCategories).to.eqaul(categoriesData[0].gameCategories);
+  })
+
 });
