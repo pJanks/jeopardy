@@ -1,6 +1,271 @@
 /* This is an example of using Sass, otherwise plain CSS works too*/
 $primary-background: pink;
+* {
+  margin: 0;
+  font-family: Arial Black;
+}
 
 body {
-  background-color: $primary-background;
+  background-image: url(../images/space_background_2.jpg);
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+h1 {
+  overflow: auto;
+  color: white;
+  text-align: center;
+  font-size: 250%;
+}
+
+h2 {
+  overflow: auto;
+  color: white;
+  font-size: 140%;
+}
+
+h3 {
+  overflow: auto;
+  color: white;
+  font-size: 140%;
+}
+
+p {
+  text-align: center;
+  color: white;
+  font-size: 140%;
+}
+
+.intro-container {
+  background-image: url(../images/baby_yoda.png);
+  background-size: cover;
+  position: absolute;
+  border: 2px solid white;
+  top: 20%;
+  left: 20%;
+  bottom: 20%;
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.player1-input,
+.player2-input,
+.player3-input,
+.start-game-button {
+  width: 30%;
+  height: 60px;
+  margin: 1%;
+  border-radius: 10px;
+  font-size: 100%;
+  text-align: center;
+  opacity: .6;
+  transition: transform .3s;
+}
+
+.start-game-button:hover {
+  background-color: #35FFF0;
+  cursor: pointer;
+  transform: scale(1.08);
+}
+
+.top {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 20vh;
+}
+
+.leader-board-button,
+.new-game-button {
+  height: 50px;
+  width: 10%;
+  border-radius: 10px;
+  font-size: 100%;
+}
+
+.leader-board-button:hover,
+.new-game-button:hover {
+  cursor: pointer;
+  background-color: #35FFF0;
+}
+
+.middle {
+  display: flex;
+  height: 60vh;
+}
+
+.game-board {
+  width: 60%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "a f k p"
+    "b g l q"
+    "c h m r"
+    "d i n s"
+    "e j o t";
+}
+
+.board {
+  padding: 13%;
+  border: 1px dotted white;
+}
+
+.number {
+  transition: transform .3s;
+}
+
+.number:hover{
+  transform: scale(1.4);
+}
+
+.board:hover {
+  background-color: rgba(80, 78, 255, 0.3);
+  cursor: pointer;
+}
+
+.a1:hover, .b1:hover,
+.c1:hover, .d1:hover {
+  cursor: default;
+  background-color:inherit;
+}
+
+.question-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  border: 2px dotted white;
+  top: 20%;
+  left: 20%;
+  bottom: 20%;
+  width: 60%;
+}
+
+.question {
+  text-align: center;
+  margin: 4%;
+}
+
+.answer-button {
+  margin: 1%;
+  height: 40px;
+  width: 50%;
+  border-radius: 10px;
+  font-size: 100%;
+  transition: transform .3s;
+  border: none;
+}
+
+.answer-button:hover {
+  transform: scale(1.09);
+  cursor: pointer;
+  background-color: #35FFF0;
+}
+
+.left-column,
+.right-column {
+  width: 20%;
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-around;
+  height: 20vh;
+}
+
+.player-1-container,
+.player-2-container,
+.player-3-container {
+  padding: 3%;
+}
+
+.a1 {
+  grid-area: a;
+}
+
+.a2 {
+  grid-area: b;
+}
+
+.a3 {
+  grid-area: c;
+}
+
+.a4 {
+  grid-area: d;
+}
+
+.a5 {
+  grid-area: e;
+}
+
+.b1 {
+  grid-area: f;
+}
+
+.b2 {
+  grid-area: g;
+}
+
+.b3 {
+  grid-area: h;
+}
+
+.b4 {
+  grid-area: i;
+}
+
+.b5 {
+  grid-area: j;
+}
+
+.c1 {
+  grid-area: k;
+}
+
+.c2 {
+  grid-area: l;
+}
+
+.c3 {
+  grid-area: m;
+}
+
+.c4 {
+  grid-area: n;
+}
+
+.c5 {
+  grid-area: o;
+}
+
+.d1 {
+  grid-area: p;
+}
+
+.d2 {
+  grid-area: q;
+}
+
+.d3 {
+  grid-area: r;
+}
+
+.d4 {
+  grid-area: s;
+}
+
+.d5 {
+  grid-area: t;
+}
+
+.hidden {
+  display: none;
 }

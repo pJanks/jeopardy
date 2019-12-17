@@ -1,9 +1,17 @@
 class Round {
   constructor() {
 
+  constructor(categories, dailyDoubleCount) {
+    this.categories = categories;
+    this.clues = [];
+    this.dailyDoubleCount = dailyDoubleCount;
+  }
+
+  assignDailyDouble() {
+
+
   }
 }
 
-if (typeof module !== 'undefined') {
-  module.exports = Round;
-}
+export default Round;
+
