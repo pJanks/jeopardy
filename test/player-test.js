@@ -1,12 +1,12 @@
 const chai = require("chai");
 const expect = chai.expect;
-let players;
+let player;
 
 const Player = require("../src/Player");
 // const playerData = require("../data/players");
 
 beforeEach(() => {
-  players = new Player(playerData[0]);
+  player = new Player(playerData[0]);
 })
 
 describe ('Player', () => {
@@ -16,6 +16,6 @@ describe ('Player', () => {
   })
 
   it('should be an instance of a User', () => {
-    expect(players).to.be.an.instanceof(Player);
+    expect(player).to.be.an.instanceof(Player);
   })
 });

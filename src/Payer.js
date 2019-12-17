@@ -1,9 +1,9 @@
 class Player {
-  constructor() {
-
+  constructor(name, answer, score) {
+    this.name = name;
+    this.answer = answer;
+    this.score = 0;
   }
 }
 
-if (typeof module !== 'undefined') {
-  module.exports = Player;
-}
+export default Player;
