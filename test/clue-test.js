@@ -1,7 +1,6 @@
 import chai from 'chai';
 const expect = chai.expect;
 import Clue from '../src/Clue'
-import data from '../data/dataset.js'
 
 describe('Clue', function() {
 
