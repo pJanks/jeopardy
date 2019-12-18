@@ -1,3 +1,4 @@
+class Clue {
   constructor(question, answer, id, pointValue, dailyDouble = false) {
     this.question = question;
     this.answer = answer;
@@ -16,4 +17,3 @@
 }
 
 export default Clue;
-
