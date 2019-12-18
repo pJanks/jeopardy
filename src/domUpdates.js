@@ -51,6 +51,7 @@ const domUpdates = {
     round3 = new Round(round3Nums, 0);
     game.rounds.push(round1, round2, round3);
     game.instanstiatePlayers($('.player1-input').val(), $('.player2-input').val(), $('.player3-input').val());
+    game.instanstiateClues();
     $('.intro-container').addClass('hidden');
     $('.bottom').removeClass('hidden');
 
