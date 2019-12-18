@@ -1,9 +1,12 @@
 const chai = require("chai");
 const expect = chai.expect;
-import Game from '../src/Clue'
+import Game from '../src/Game';
+import Clue from '../src/Clue';
+import Player from '../src/Player';
+import Round from '../src/Round';
 
 describe ('Game', () => {
-
+let clue;
 let game;
 let roundOne;
 let roundTwo;
@@ -13,47 +16,62 @@ let playerTwo;
 let playerThree;
 
 beforeEach(() => {
-  games = new Game();
-  playerOne = new Player();
-  playerTwo = new Player();
-  playerThree = new Player();
-  roundOne = new Round();
-  roundTwo = new Round();
-  roundThree = new Round();
-
+  clue = new Clue('Sound a dog makes', 'bark!!!', 10, 100);
+  game = new Game({'unitedStatesHistory': 1}, clue, [2, 5, 3, 6]);
+  playerOne = new Player('Trond');
+  playerTwo = new Player('Zack');
+  playerThree = new Player('Johnny');
+  roundOne = new Round({'unitedStatesHistory': 1});
+  roundTwo = new Round({'lifeSciences': 2});
+  roundThree = new Round({'publicHealth': 0});
 })
 
-  it.skip('should be a function', () => {
-    expect(Game).to.be.a('function');
-  })
+describe ('default properties', () => {
 
-  it.skip('should be an instance of a Game', () => {
-    expect(game).to.be.an.instanceof(Game);
-  })
+    it('should be a function', () => {
+      expect(Game).to.be.a('function');
+    })
 
-  it.skip('should be have game categories', () => {
-    expect(game.gameCategories).to.eqaul({'unitedStatesHistory': 1});
-  })
+    it('should be an instance of a Game', () => {
+      expect(game).to.be.an.instanceof(Game);
+    })
 
-  it.skip('should begin round 1 when players are instantiated', () => {
-    expect(game.players).to.eqaul(3);
+    it('should have game categories', () => {
+      expect(game.gameCategories).to.deep.equal({'unitedStatesHistory': 1});
+    })
 
+    it('should start off at round 1', () => {
+      expect(game.roundNumber).to.equal(1);
+    })
 
-  })
+    it('should have three players when game starts', () => {
+      expect(game.players.length).to.equal(0);
+      game.instanstiatePlayers(playerOne, playerTwo, playerThree);
+      expect(game.players.length).to.equal(3);
+    })
 
-  it.skip('should hold all clues', () => {
-    expect(game.allClues).to.eqaul();
-  })
+    it('should hold three rounds at start of game', () => {
+      expect(game.rounds.length).to.equal(0);
+      game.rounds.push(roundOne, roundTwo, roundThree);
+      expect(game.rounds.length).to.equal(3);
+    })
 
-  it.skip('should show who the currebnt player is', () => {
-    expect(game.currentPlayer).to.eqaul();
-  })
+    it('should be able to hold clues', () => {
+      expect(game.allClues.answer).to.equal('bark!!!');
+    })
 
-  it.skip('should show how many clues are remaining', () => {
-    expect(game.cluesRemaining).to.eqaul();
-  })
+    it('should start at player index 0', () => {
+      expect(game.currentPlayer).to.equal(0);
+    })
 
-  it.skip('', () => {
-    expect(game.randomNumbers).to.eqaul();
-  })
+    it('should start with 16 clues remaining', () => {
+      expect(game.cluesRemaining).to.equal(16);
+    })
+
+    it('should start with an array of random numbers', () => {
+      expect(game.randomNumbers).to.deep.equal([2, 5, 3, 6]);
+    })
+
+  });
+
 });
