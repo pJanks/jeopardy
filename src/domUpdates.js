@@ -3,24 +3,26 @@ import Game from './Game.js';
 import Player from './Player.js'
 import Round from './Round.js'
 import Clue from './Clue.js'
+import DailyDouble from './DailyDouble.js'
 
-let game, round1;
+let game, round1, round2, round3;
 
 const domUpdates = {
   printSingleQuestion: () => {
     $('.game-board').html(`
-    <div class="question-area">
-      <p class="question">What Sonya Fitzpatrick is, or the Animal Planet series on which she communicates with animals telepathically</p>
-      <button type="button" class="answer-button answer-a">Lone Star Law</button>
-      <button type="button" class="answer-button answer-b">Pit Bulls & Parolees</button>
-      <button type="button" class="answer-button answer-c">The Pet Psychic</button>
-      <button type="button" class="answer-button answer-d">Tanked</button>
-      <button type="button" class="answer-button answer-e">My Cat from HELL</button>
+    <div class='question-area'>
+      <p class='question'>What Sonya Fitzpatrick is, or the Animal Planet series on which she communicates with animals telepathically</p>
+      <button type='button' class='answer-button answer-a'>Lone Star Law</button>
+      <button type='button' class='answer-button answer-b'>Pit Bulls & Parolees</button>
+      <button type='button' class='answer-button answer-c'>The Pet Psychic</button>
+      <button type='button' class='answer-button answer-d'>Tanked</button>
+      <button type='button' class='answer-button answer-e'>My Cat from HELL</button>
     </div>`);
   },
 
   displayQuestionScreen: e => {
-    if ($(e.target).hasClass('number')) {
+    if ($(e.target).closest('.board')) {
+      console.log(e.target);
       $('.game-board').text('');
       domUpdates.printSingleQuestion();
     }
@@ -42,37 +44,42 @@ const domUpdates = {
     let nums = domUpdates.shuffle();
     game = new Game(dataInfo.categories, dataInfo.clues, nums);
     const round1Nums = game.randomNumbers.splice(0, 4);
-    round1 = new Round(round1Nums, game.roundNumber);
+    const round2Nums = game.randomNumbers.splice(0, 4);
+    const round3Nums = game.randomNumbers.splice(0, 1);
+    round1 = new Round(round1Nums, 1);
+    round2 = new Round(round2Nums, 2);
+    round3 = new Round(round3Nums, 0);
+    game.rounds.push(round1, round2, round3);
     game.instanstiatePlayers($('.player1-input').val(), $('.player2-input').val(), $('.player3-input').val());
+    game.instanstiateClues();
     $('.intro-container').addClass('hidden');
     $('.bottom').removeClass('hidden');
-
 
     $('.player-1-name').text($('.player1-input').val().toUpperCase())
     $('.player-2-name').text($('.player2-input').val().toUpperCase())
     $('.player-3-name').text($('.player3-input').val().toUpperCase())
 
     $('.game-board').html(`
-    <div class="board a1"></div>
-    <div class="board a2"><p class="number">100</p></div>
-    <div class="board a3"><p class="number">200</p></div>
-    <div class="board a4"><p class="number">300</p></div>
-    <div class="board a5"><p class="number">400</p></div>
-    <div class="board b1"></div>
-    <div class="board b2"><p class="number">100</p></div>
-    <div class="board b3"><p class="number">200</p></div>
-    <div class="board b4"><p class="number">300</p></div>
-    <div class="board b5"><p class="number">400</p></div>
-    <div class="board c1"></div>
-    <div class="board c2"><p class="number">100</p></div>
-    <div class="board c3"><p class="number">200</p></div>
-    <div class="board c4"><p class="number">300</p></div>
-    <div class="board c5"><p class="number">400</p></div>
-    <div class="board d1"></div>
-    <div class="board d2"><p class="number">100</p></div>
-    <div class="board d3"><p class="number">200</p></div>
-    <div class="board d4"><p class="number">300</p></div>
-    <div class="board d5"><p class="number">400</p></div>`);
+    <div class='board a1'></div>
+    <div class='board a2'><p class='number'>100</p></div>
+    <div class='board a3'><p class='number'>200</p></div>
+    <div class='board a4'><p class='number'>300</p></div>
+    <div class='board a5'><p class='number'>400</p></div>
+    <div class='board b1'></div>
+    <div class='board b2'><p class='number'>100</p></div>
+    <div class='board b3'><p class='number'>200</p></div>
+    <div class='board b4'><p class='number'>300</p></div>
+    <div class='board b5'><p class='number'>400</p></div>
+    <div class='board c1'></div>
+    <div class='board c2'><p class='number'>100</p></div>
+    <div class='board c3'><p class='number'>200</p></div>
+    <div class='board c4'><p class='number'>300</p></div>
+    <div class='board c5'><p class='number'>400</p></div>
+    <div class='board d1'></div>
+    <div class='board d2'><p class='number'>100</p></div>
+    <div class='board d3'><p class='number'>200</p></div>
+    <div class='board d4'><p class='number'>300</p></div>
+    <div class='board d5'><p class='number'>400</p></div>`);
     domUpdates.assignRoundCategories();
   },
 
@@ -85,7 +92,5 @@ const domUpdates = {
   },
 
 }
-
-  // when a box is clicked, find the cla
 
 export default domUpdates;

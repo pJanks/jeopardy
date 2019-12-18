@@ -3,7 +3,7 @@ import Player from './Player.js'
 class Game {
   constructor(categories, clues, randomNumbers) {
     this.gameCategories = categories;
-    this.roundNumber = 1;
+    this.roundNumber = 0;
     this.players = [];
     this.rounds = [];
     this.allClues = clues;
@@ -19,9 +19,40 @@ class Game {
   }
 
   instanstiateClues() {
-    allClues.push()
+    let firstClues;
+    let sortedQuestions;
+    this.rounds[this.roundNumber].categories.forEach(category => {
+      firstClues = this.allClues.find(clue => {
+        if (category + 1 === clue.categoryId && clue.pointValue === 100)
+        return clue
+      })
+      this.rounds[this.roundNumber].clues.push(firstClues);
+    });
+    this.rounds[this.roundNumber].categories.forEach(category => {
+      firstClues = this.allClues.find(clue => {
+        if (category + 1 === clue.categoryId && clue.pointValue === 200)
+        return clue
+      })
+      this.rounds[this.roundNumber].clues.push(firstClues);
+    });
+    this.rounds[this.roundNumber].categories.forEach(category => {
+      firstClues = this.allClues.find(clue => {
+        if (category + 1 === clue.categoryId && clue.pointValue === 300)
+        return clue
+      })
+      this.rounds[this.roundNumber].clues.push(firstClues);
+    });
+    this.rounds[this.roundNumber].categories.forEach(category => {
+      firstClues = this.allClues.find(clue => {
+        if (category + 1 === clue.categoryId && clue.pointValue === 400)
+        return clue
+      })
+      this.rounds[this.roundNumber].clues.push(firstClues);
+    });
+    sortedQuestions = this.rounds[this.roundNumber].clues.sort((a, b) => {
+      return a.categoryId - b.categoryId;
+    })
   }
 }
 
 export default Game;
-
