@@ -14,7 +14,7 @@ describe('Clue', function() {
   describe('default properties', function() {
 
     it('should have a question', function() {
-      expect('Sound a dog makes');
+      expect(clue.question).to.equal('Sound a dog makes');
     });
 
     it('should have an answer', function() {
@@ -29,11 +29,6 @@ describe('Clue', function() {
       expect(clue.pointValue).to.equal(100);
     });
 
-
-    it('should have a question', function() {
-      expect(clue.question).to.equal(data.clues[0].question);
-    });
-
     it('should have a daily double set to false by default', function() {
       expect(clue.dailyDouble).to.equal(false);
     });
@@ -42,11 +37,14 @@ describe('Clue', function() {
   describe('checkAnswer', function() {
 
     it('should evaluate to true if answer is correct', function() {
-      expect(clue.checkAnswer('bark!!!')).to.equal(true);    });
+      expect(clue.checkAnswer('bark!!!')).to.equal(true);
+    });
 
     it('should evaluate to false if answer is not correct', function() {
-       expect(clue.checkAnswer('oink')).to.equal(false);
+      expect(clue.checkAnswer('oink')).to.equal(false);
     });
 
   });
+
+
 });
