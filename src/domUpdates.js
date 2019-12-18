@@ -43,7 +43,6 @@ const domUpdates = {
   startGame: dataInfo => {
     let nums = domUpdates.shuffle();
     game = new Game(dataInfo.categories, dataInfo.clues, nums);
-    console.log(game.randomNumbers);
     const round1Nums = game.randomNumbers.splice(0, 4);
     const round2Nums = game.randomNumbers.splice(0, 4);
     const round3Nums = game.randomNumbers.splice(0, 1);
