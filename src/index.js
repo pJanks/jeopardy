@@ -14,7 +14,7 @@ const getData = () => {
   return fetch('https://fe-apps.herokuapp.com/api/v1/gametime/1903/jeopardy/data')
   .then(response => response.json())
   .then(info => {
-    domUpdates.startGame(info.data);
+    domUpdates.populateGameBoard(info.data);
   })
   .catch(window.alert('There was an error.'))
 }
