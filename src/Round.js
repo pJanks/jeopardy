@@ -1,5 +1,4 @@
 class Round {
-  constructor() {
 
   constructor(categories, dailyDoubleCount) {
     this.categories = categories;
@@ -14,4 +13,3 @@ class Round {
 }
 
 export default Round;
-

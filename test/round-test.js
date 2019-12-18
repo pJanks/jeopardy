@@ -1,8 +1,8 @@
 const chai = require("chai");
 const expect = chai.expect;
+import data from '../src/Round.js'
 let rounds;
 
-const Round = require("../Round");
 // const roundData = require("../data/users");
 
 beforeEach(() => {
