@@ -20,6 +20,7 @@ class Game {
 
   instanstiateClues() {
     let firstClues;
+    let sortedQuestions;
     this.rounds[this.roundNumber].categories.forEach(category => {
       firstClues = this.allClues.find(clue => {
         if (category + 1 === clue.categoryId && clue.pointValue === 100)
@@ -48,6 +49,10 @@ class Game {
       })
       this.rounds[this.roundNumber].clues.push(firstClues);
     });
+    sortedQuestions = this.rounds[this.roundNumber].clues.sort((a, b) => {
+      return a.categoryId - b.categoryId;
+    })
+    this.rounds[this.roundNumber].clues = sortedQuestions;
     console.log(this.rounds[this.roundNumber].clues);
   }
 }
