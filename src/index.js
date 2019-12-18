@@ -16,6 +16,7 @@ const getData = () => {
   .then(info => {
     domUpdates.startGame(info.data);
   })
+  .catch(window.alert('There was an error.'))
 }
 
 // Event Listeners
