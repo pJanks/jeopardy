@@ -1,21 +1,54 @@
-const chai = require("chai");
+import chai from 'chai';
 const expect = chai.expect;
-let clues;
+import Clue from '../src/Clue'
+import data from '../data/dataset.js'
 
-const Clue = require("../src/Clue");
-// const playerData = require("../data/players");
+describe('Clue', function() {
 
-beforeEach(() => {
-  clues = new Clue(gameData[0]);
-})
+  let clue;
 
-describe ('Clues', () => {
+  beforeEach(() => {
+    clue = new Clue(data.clues[0].question, data.clues[0].answer, data.clues[0].categoryId, data.clues[0].pointValue);
+  });
 
-  it('should be a function', () => {
-    expect(Clue).to.be.a('function');
-  })
+  describe('default properties', function() {
 
-  it('should be an instance of a User', () => {
-    expect(clues).to.be.an.instanceof(Clue);
-  })
+    it('should have a question', function() {
+      expect(clue.question).to.equal(data.clues[0].question);
+    });
+
+    it('should have an answer', function() {
+      expect(clue.answer).to.equal(data.clues[0].answer);
+    });
+
+    it('should have a id', function() {
+      expect(clue.id).to.equal(data.clues[0].categoryId);
+    });
+
+    it('should have a point value', function() {
+      expect(clue.pointValue).to.equal(data.clues[0].pointValue);
+    });
+
+    it('should have a question', function() {
+      expect(clue.question).to.equal(data.clues[0].question);
+    });
+
+    it('should have a daily double set to false by default', function() {
+      expect(clue.dailyDouble).to.equal(false);
+    });
+  });
+
+  describe('checkAnswer', function() {
+
+    it('should evaluate to true if answer is correct', function() {
+      expect(clue.checkAnswer('golf')).to.equal(true);
+    });
+
+    it('should evaluate to false if answer is not correct', function() {
+      expect(clue.checkAnswer('hello')).to.equal(false);
+    });
+
+  });
+
+
 });
