@@ -52,8 +52,6 @@ class Game {
     sortedQuestions = this.rounds[this.roundNumber].clues.sort((a, b) => {
       return a.categoryId - b.categoryId;
     })
-    this.rounds[this.roundNumber].clues = sortedQuestions;
-    console.log(this.rounds[this.roundNumber].clues);
   }
 }
 
