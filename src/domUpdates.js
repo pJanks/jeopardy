@@ -8,10 +8,11 @@ import DailyDouble from './DailyDouble.js'
 let game;
 
 const domUpdates = {
-  printSingleQuestion: () => {
+  printSingleQuestion: (specificCard) => {
+    let clueIndex = parseInt($(specificCard).attr('id'));
     $('.game-board').html(`
     <div class='question-area'>
-      <p class='question'>What Sonya Fitzpatrick is, or the Animal Planet series on which she communicates with animals telepathically</p>
+      <p class='question'>${game.rounds[game.roundNumber].clues[clueIndex].question}</p>
       <div type="button" class="light-saber-container">
         <button type="button" class="light-saber-sub-button">Lone Star Law</button>
         <div class="light-saber-handle-image"></div>
@@ -39,7 +40,7 @@ const domUpdates = {
     if ($(e.target).closest('.board')) {
       console.log(e.target);
       $('.game-board').text('');
-      domUpdates.printSingleQuestion();
+      domUpdates.printSingleQuestion(e.target);
     }
   },
 
@@ -69,25 +70,25 @@ const domUpdates = {
 
     $('.game-board').html(`
     <div class='board a1'></div>
-    <div class='board a2'><p class='number'>100</p></div>
-    <div class='board a3'><p class='number'>200</p></div>
-    <div class='board a4'><p class='number'>300</p></div>
-    <div class='board a5'><p class='number'>400</p></div>
+    <div class='board' a2 id='0'><p class='number' id='0'>100</p></div>
+    <div class='board a3' id='1'><p class='number' id='1'>200</p></div>
+    <div class='board a4' id='2'><p class='number' id='2'>300</p></div>
+    <div class='board a5' id='3'><p class='number' id='3'>400</p></div>
     <div class='board b1'></div>
-    <div class='board b2'><p class='number'>100</p></div>
-    <div class='board b3'><p class='number'>200</p></div>
-    <div class='board b4'><p class='number'>300</p></div>
-    <div class='board b5'><p class='number'>400</p></div>
+    <div class='board b2' id='4'><p class='number' id='4'>100</p></div>
+    <div class='board b3' id='5'><p class='number' id='5'>200</p></div>
+    <div class='board b4' id='6'><p class='number' id='6'>300</p></div>
+    <div class='board b5' id='7'><p class='number' id='7'>400</p></div>
     <div class='board c1'></div>
-    <div class='board c2'><p class='number'>100</p></div>
-    <div class='board c3'><p class='number'>200</p></div>
-    <div class='board c4'><p class='number'>300</p></div>
-    <div class='board c5'><p class='number'>400</p></div>
+    <div class='board c2' id='8'><p class='number' id='8'>100</p></div>
+    <div class='board c3' id='9'><p class='number' id='9'>200</p></div>
+    <div class='board c4' id='10'><p class='number' id='10'>300</p></div>
+    <div class='board c5' id='11'><p class='number' id='11'>400</p></div>
     <div class='board d1'></div>
-    <div class='board d2'><p class='number'>100</p></div>
-    <div class='board d3'><p class='number'>200</p></div>
-    <div class='board d4'><p class='number'>300</p></div>
-    <div class='board d5'><p class='number'>400</p></div>`);
+    <div class='board d2' id='12'><p class='number' id='12'>100</p></div>
+    <div class='board d3' id='13'><p class='number' id='13'>200</p></div>
+    <div class='board d4' id='14'><p class='number' id='14'>300</p></div>
+    <div class='board d5' id='15'><p class='number' id='15'>400</p></div>`);
     domUpdates.assignRoundCategories();
   },
 
