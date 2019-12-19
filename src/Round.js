@@ -1,7 +1,8 @@
 class Round {
   constructor(categories, dailyDoubleCount) {
     this.categories = categories;
-    this.clues = [];
+    this.cluesData = [];
+    this.clues = []
     this.dailyDoubleCount = dailyDoubleCount;
   }
 
