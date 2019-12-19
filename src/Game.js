@@ -17,15 +17,26 @@ class Game {
 
   startGame() {
     let round1, round2, round3;
-    const round1Nums = this.randomNumbers.splice(0, 4);
-    const round2Nums = this.randomNumbers.splice(0, 4);
-    const round3Nums = this.randomNumbers.splice(0, 1);
+    const round1Nums = this.randomNumbers.splice(0, 4).sort();
+    const round2Nums = this.randomNumbers.splice(0, 4).sort();
+    const round3Nums = this.randomNumbers.splice(0, 1).sort();
     round1 = new Round(round1Nums, 1);
     round2 = new Round(round2Nums, 2);
     round3 = new Round(round3Nums, 0);
     this.rounds.push(round1, round2, round3);
     this.instanstiatePlayers($('.player1-input').val(), $('.player2-input').val(), $('.player3-input').val());
+    this.shuffleClues();
     this.instanstiateClues();
+  }
+
+  shuffleClues() {
+      let j, x, i;
+      for (i = this.allClues.length - 1; i > 0; i--) {
+          j = Math.floor(Math.random() * (i + 1));
+          x = this.allClues[i];
+          this.allClues[i] = this.allClues[j];
+          this.allClues[j] = x;
+      }
   }
 
   instanstiatePlayers(playerOne, playerTwo, playerThree) {

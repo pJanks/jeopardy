@@ -16,7 +16,9 @@ const getData = () => {
   .then(info => {
     domUpdates.populateGameBoard(info.data);
   })
-  .catch(window.alert('There was an error.'))
+  .catch( () => {
+    window.alert('There was an error.')
+  })
 }
 
 // Event Listeners
