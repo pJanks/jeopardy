@@ -55,8 +55,12 @@ p, .a1, .b1, .c1, .d1 {
 
 .player1-icon,
 .player2-icon,
-.player3-icon {
-  background-image: url(../images/bb8_icon.png);
+.player3-icon,
+.p1-avatar,
+.p2-avatar,
+.p3-avatar {
+  background-image: url(../images/bb8_n.png);
+  border: 2px solid $light-saber-blue;
   background-size: cover;
   border-radius: 50px;
   height: 100px;
@@ -64,12 +68,14 @@ p, .a1, .b1, .c1, .d1 {
   z-index: 2;
 }
 
-.player2-icon {
-  background-image: url(../images/c3po_icon.png);
+.player2-icon,
+.p2-avatar {
+  background-image: url(../images/c3po_n.png);
 }
 
-.player3-icon {
-  background-image: url(../images/r2d2_icon.png);
+.player3-icon,
+.p3-avatar {
+  background-image: url(../images/r2d2_n.png);
 }
 
 .player1-icon-container,
@@ -110,7 +116,7 @@ p, .a1, .b1, .c1, .d1 {
 
 .start-game-sub-button,
 .light-saber-sub-button {
-  background-color: #0043ff;
+  background-color: $light-saber-blue;
   border: none;
   color: #FFFFFF;
   margin-top: 2%;
@@ -126,13 +132,12 @@ p, .a1, .b1, .c1, .d1 {
 .light-saber-container:hover {
   transform: scale(1.08);
   opacity: 1;
-
   .start-game-sub-button,
   .light-saber-sub-button {
     // position: absolute;
     // animation: animate-right 1s;
     background-color: #97C9FE;
-    box-shadow: 0px 0px 50px 40px #0043ff;
+    box-shadow: 0px 0px 50px 40px $light-saber-blue;
     color: black;
     cursor: pointer;
   }
@@ -163,6 +168,24 @@ p, .a1, .b1, .c1, .d1 {
   justify-content: space-around;
   align-items: center;
   height: 20vh;
+}
+
+.player-1-container,
+.player-2-container,
+.player-3-container {
+  margin-top: 3.5%;
+  display: flex;
+  background-color: rgba(122, 0, 255, .5);
+  height: 104px;
+  width: 400px;
+  border-radius: 52px;
+}
+
+.p1-text-box,
+.p2-text-box,
+.p3-text-box {
+  padding-left: 2%;
+  width: 300px;
 }
 
 .leader-board-button,
@@ -267,13 +290,6 @@ p, .a1, .b1, .c1, .d1 {
   display: flex;
   justify-content: space-around;
   height: 20vh;
-}
-
-.player-1-container,
-.player-2-container,
-.player-3-container {
-  text-align: center;
-  padding: 3%;
 }
 
 .a1 {
