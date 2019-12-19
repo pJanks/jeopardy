@@ -27,8 +27,6 @@ class Game {
     this.instanstiatePlayers($('.player1-input').val(), $('.player2-input').val(), $('.player3-input').val());
     this.shuffleClues();
     this.instanstiateClues();
-    console.log(this.rounds[0].clues);
-
   }
 
   shuffleClues() {
