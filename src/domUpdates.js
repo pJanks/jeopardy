@@ -12,11 +12,26 @@ const domUpdates = {
     $('.game-board').html(`
     <div class='question-area'>
       <p class='question'>What Sonya Fitzpatrick is, or the Animal Planet series on which she communicates with animals telepathically</p>
-      <button type='button' class='answer-button answer-a'>Lone Star Law</button>
-      <button type='button' class='answer-button answer-b'>Pit Bulls & Parolees</button>
-      <button type='button' class='answer-button answer-c'>The Pet Psychic</button>
-      <button type='button' class='answer-button answer-d'>Tanked</button>
-      <button type='button' class='answer-button answer-e'>My Cat from HELL</button>
+      <div type="button" class="light-saber-container">
+        <button type="button" class="light-saber-sub-button">Lone Star Law</button>
+        <div class="light-saber-handle-image"></div>
+      </div>
+      <div type="button" class="light-saber-container">
+        <button type="button" class="light-saber-sub-button">Pit Bulls & Parolees</button>
+        <div class="light-saber-handle-image"></div>
+      </div>
+      <div type="button" class="light-saber-container">
+        <button type="button" class="light-saber-sub-button">The Pet Psychic</button>
+        <div class="light-saber-handle-image"></div>
+      </div>
+      <div type="button" class="light-saber-container">
+        <button type="button" class="light-saber-sub-button">Tanked</button>
+        <div class="light-saber-handle-image"></div>
+      </div>
+      <div type="button" class="light-saber-container">
+        <button type="button" class="light-saber-sub-button">My Cat from HELL</button>
+        <div class="light-saber-handle-image"></div>
+      </div>
     </div>`);
   },
 
