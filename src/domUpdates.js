@@ -5,7 +5,7 @@ import Round from './Round.js'
 import Clue from './Clue.js'
 import DailyDouble from './DailyDouble.js'
 
-let game, round1, round2, round3;
+let game;
 
 const domUpdates = {
   printSingleQuestion: () => {
@@ -40,18 +40,11 @@ const domUpdates = {
     return nums;
   },
 
-  startGame: dataInfo => {
+  populateGameBoard: dataInfo => {
     let nums = domUpdates.shuffle();
     game = new Game(dataInfo.categories, dataInfo.clues, nums);
-    const round1Nums = game.randomNumbers.splice(0, 4);
-    const round2Nums = game.randomNumbers.splice(0, 4);
-    const round3Nums = game.randomNumbers.splice(0, 1);
-    round1 = new Round(round1Nums, 1);
-    round2 = new Round(round2Nums, 2);
-    round3 = new Round(round3Nums, 0);
-    game.rounds.push(round1, round2, round3);
-    game.instanstiatePlayers($('.player1-input').val(), $('.player2-input').val(), $('.player3-input').val());
-    game.instanstiateClues();
+    game.startGame();
+    console.log(game);
     $('.intro-container').addClass('hidden');
     $('.bottom').removeClass('hidden');
 
@@ -85,10 +78,10 @@ const domUpdates = {
 
   assignRoundCategories: () => {
     let keys = Object.keys(game.gameCategories)
-    $('.a1').text((keys[round1.categories[0]]).split(/(?=[A-Z])/).join(' ').toUpperCase())
-    $('.b1').text((keys[round1.categories[1]]).split(/(?=[A-Z])/).join(' ').toUpperCase())
-    $('.c1').text((keys[round1.categories[2]]).split(/(?=[A-Z])/).join(' ').toUpperCase())
-    $('.d1').text((keys[round1.categories[3]]).split(/(?=[A-Z])/).join(' ').toUpperCase())
+    $('.a1').text((keys[game.rounds[game.roundNumber].categories[0]]).split(/(?=[A-Z])/).join(' ').toUpperCase())
+    $('.b1').text((keys[game.rounds[game.roundNumber].categories[1]]).split(/(?=[A-Z])/).join(' ').toUpperCase())
+    $('.c1').text((keys[game.rounds[game.roundNumber].categories[2]]).split(/(?=[A-Z])/).join(' ').toUpperCase())
+    $('.d1').text((keys[game.rounds[game.roundNumber].categories[3]]).split(/(?=[A-Z])/).join(' ').toUpperCase())
   },
 
 }
