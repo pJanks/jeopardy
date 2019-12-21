@@ -30,13 +30,13 @@ class Game {
   }
 
   shuffleClues() {
-      let j, x, i;
-      for (i = this.allClues.length - 1; i > 0; i--) {
-          j = Math.floor(Math.random() * (i + 1));
-          x = this.allClues[i];
-          this.allClues[i] = this.allClues[j];
-          this.allClues[j] = x;
-      }
+    let j, x, i;
+    for (i = this.allClues.length - 1; i > 0; i--) {
+        j = Math.floor(Math.random() * (i + 1));
+        x = this.allClues[i];
+        this.allClues[i] = this.allClues[j];
+        this.allClues[j] = x;
+    }
   }
 
   instanstiatePlayers(playerOne, playerTwo, playerThree) {
