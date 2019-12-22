@@ -8,6 +8,19 @@ import DailyDouble from './DailyDouble.js'
 let game;
 
 const domUpdates = {
+
+  messageFromYoda: (message) => {
+    $('.game-board').html(`
+      <div class='answer-validation-container'>
+        <div class='lower-answer-validation-container'>
+          <div class='yoda-image-container'></div>
+        </div>
+        <div class='answer-message-container'>
+          <p class='answer-validation-message'>${message}</p>
+        </div>
+      </div>`);
+  },
+
   printSingleQuestion: () => {
     $('.game-board').html(`
     <div class='question-area'>
@@ -26,10 +39,6 @@ const domUpdates = {
       </div>
       <div type="button" class="light-saber-container">
         <button type="button" class="light-saber-sub-button">Tanked</button>
-        <div class="light-saber-handle-image"></div>
-      </div>
-      <div type="button" class="light-saber-container">
-        <button type="button" class="light-saber-sub-button">My Cat from HELL</button>
         <div class="light-saber-handle-image"></div>
       </div>
     </div>`);
