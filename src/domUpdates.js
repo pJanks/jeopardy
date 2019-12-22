@@ -39,6 +39,17 @@ const domUpdates = {
       </div>
     </div>`);
     $('.light-saber-container').click( () => {
+      game.cluesRemaining--;
+      game.currentPlayer++;
+      if (game.currentPlayer === 3) {
+        game.currentPlayer = 0
+      }
+      else if (game.cluesRemaining === 0) {
+        game.roundNumber++;
+        game.cluesRemaing = 16;
+        domUpdates.populateGameBoard();
+      }
+      console.log(game);
       $('.game-board').removeClass('hidden');
       $('.question-area').addClass('hidden');
     })
@@ -65,39 +76,44 @@ const domUpdates = {
   },
 
   populateGameBoard: dataInfo => {
-    let nums = domUpdates.shuffle();
-    game = new Game(dataInfo.categories, dataInfo.clues, nums);
-    game.startGame();
-    console.log(game);
-    $('.intro-container').addClass('hidden');
-    $('.bottom').removeClass('hidden');
+      let nums = domUpdates.shuffle();
+      if (!game) {
+        game = new Game(dataInfo.categories, dataInfo.clues, nums);
+      }
+      console.log(game);
+      if (game.roundNumber === 0) {
+      game.startGame();
 
-    $('.player-1-name').text($('.player1-input').val().toUpperCase())
-    $('.player-2-name').text($('.player2-input').val().toUpperCase())
-    $('.player-3-name').text($('.player3-input').val().toUpperCase())
+      $('.intro-container').addClass('hidden');
+      $('.bottom').removeClass('hidden');
 
-    $('.game-board').html(`
-    <div class='board a1'></div>
-    <button class='board a2' disabled='false' id='0' tabindex='0'><p class='number' id='0'>100</p></button>
-    <button class='board a3' disabled='false' id='1' tabindex='0'><p class='number' id='1'>200</p></button>
-    <button class='board a4' disabled='false' id='2' tabindex='0'><p class='number' id='2'>300</p></button>
-    <button class='board a5' disabled='false' id='3' tabindex='0'><p class='number' id='3'>400</p></button>
-    <div class='board b1'></div>
-    <button class='board b2' disabled='false' id='4' tabindex='0'><p class='number' id='4'>100</p></button>
-    <button class='board b3' disabled='false' id='5' tabindex='0'><p class='number' id='5'>200</p></button>
-    <button class='board b4' disabled='false' id='6' tabindex='0'><p class='number' id='6'>300</p></button>
-    <button class='board b5' disabled='false' id='7' tabindex='0'><p class='number' id='7'>400</p></button>
-    <div class='board c1'></div>
-    <button class='board c2' disabled='false' id='8' tabindex='0'><p class='number' id='8'>100</p></button>
-    <button class='board c3' disabled='false' id='9' tabindex='0'><p class='number' id='9'>200</p></button>
-    <button class='board c4' disabled='false' id='10' tabindex='0'><p class='number' id='10'>300</p></button>
-    <button class='board c5' disabled='false' id='11' tabindex='0'><p class='number' id='11'>400</p></button>
-    <div class='board d1'></div>
-    <button class='board d2' disabled='false' id='12' tabindex='0'><p class='number' id='12'>100</p></button>
-    <button class='board d3' disabled='false' id='13' tabindex='0'><p class='number' id='13'>200</p></button>
-    <button class='board d4' disabled='false' id='14' tabindex='0'><p class='number' id='14'>300</p></button>
-    <button class='board d5' disabled='false' id='15' tabindex='0'><p class='number' id='15'>400</p></button>`);
-    domUpdates.assignRoundCategories();
+      $('.player-1-name').text($('.player1-input').val().toUpperCase())
+      $('.player-2-name').text($('.player2-input').val().toUpperCase())
+      $('.player-3-name').text($('.player3-input').val().toUpperCase())
+    }
+      $('.game-board').html(`
+        <div class='board a1'></div>
+        <button class='board a2' disabled='false' id='0' tabindex='0'><p class='number' id='0'>100</p></button>
+        <button class='board a3' disabled='false' id='1' tabindex='0'><p class='number' id='1'>200</p></button>
+        <button class='board a4' disabled='false' id='2' tabindex='0'><p class='number' id='2'>300</p></button>
+        <button class='board a5' disabled='false' id='3' tabindex='0'><p class='number' id='3'>400</p></button>
+        <div class='board b1'></div>
+        <button class='board b2' disabled='false' id='4' tabindex='0'><p class='number' id='4'>100</p></button>
+        <button class='board b3' disabled='false' id='5' tabindex='0'><p class='number' id='5'>200</p></button>
+        <button class='board b4' disabled='false' id='6' tabindex='0'><p class='number' id='6'>300</p></button>
+        <button class='board b5' disabled='false' id='7' tabindex='0'><p class='number' id='7'>400</p></button>
+        <div class='board c1'></div>
+        <button class='board c2' disabled='false' id='8' tabindex='0'><p class='number' id='8'>100</p></button>
+        <button class='board c3' disabled='false' id='9' tabindex='0'><p class='number' id='9'>200</p></button>
+        <button class='board c4' disabled='false' id='10' tabindex='0'><p class='number' id='10'>300</p></button>
+        <button class='board c5' disabled='false' id='11' tabindex='0'><p class='number' id='11'>400</p></button>
+        <div class='board d1'></div>
+        <button class='board d2' disabled='false' id='12' tabindex='0'><p class='number' id='12'>100</p></button>
+        <button class='board d3' disabled='false' id='13' tabindex='0'><p class='number' id='13'>200</p></button>
+        <button class='board d4' disabled='false' id='14' tabindex='0'><p class='number' id='14'>300</p></button>
+        <button class='board d5' disabled='false' id='15' tabindex='0'><p class='number' id='15'>400</p></button>`);
+        domUpdates.assignRoundCategories();
+        game.instanstiateClues();
   },
 
   assignRoundCategories: () => {
