@@ -60,10 +60,14 @@ const domUpdates = {
         game.players[game.currentPlayer].updateScore((- game.rounds[game.roundNumber].clues[i].pointValue))
         domUpdates.messageFromYoda('Incorrect')
       }
+
       setTimeout( () => {
         $('.answer-validation-container').remove();
         domUpdates.removeHidden();
       }, 2000);
+      $('.p1-score').text(`${game.players[0].score}`)
+      $('.p2-score').text(`${game.players[1].score}`)
+      $('.p3-score').text(`${game.players[2].score}`)
       domUpdates.displayAnswerScreen();
 
       $('.question-area').remove();
