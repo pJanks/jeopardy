@@ -8,7 +8,7 @@ class Clue {
   }
 
   checkAnswer(playerAnswer) {
-    if (playerAnswer === this.answer) {
+    if (playerAnswer === (this.answer).toUpperCase()) {
       return true;
     } else {
       return false;
