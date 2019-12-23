@@ -6,6 +6,7 @@ import Clue from './Clue.js'
 import DailyDouble from './DailyDouble.js'
 
 let game;
+let possibleAnswers;
 
 const domUpdates = {
 
@@ -28,6 +29,17 @@ const domUpdates = {
     });
     $(`.player-${currentPlayer}-index-container`).addClass('active-player-style');
   },
+  
+  randomizeAnswers: (answers) => {
+    let j, x, i;
+    for (i = answers.length - 1; i > 0; i--) {
+        j = Math.floor(Math.random() * (i + 1));
+        x = answers[i];
+        answers[i] = answers[j];
+        answers[j] = x;
+    }
+    return answers;
+  },
 
   printSingleQuestion: (specificCard) => {
     let clueIndex = parseInt($(specificCard).attr('id'));
@@ -35,23 +47,25 @@ const domUpdates = {
     $(`#${clueIndex}`).text('');
     $(`#${clueIndex}`).disabled = true;
     game.shuffleClues();
+    possibleAnswers = [`${game.allClues[0].answer}`, `${game.allClues[1].answer}`, `${game.allClues[2].answer}`, `${game.rounds[game.roundNumber].clues[clueIndex].answer}`];
+    domUpdates.randomizeAnswers(possibleAnswers);
     $('.game-board').after(`
     <div class='question-area'>
-      <p class='question'>${game.rounds[game.roundNumber].clues[clueIndex].question}</p>
+      <p class='question'>${(game.rounds[game.roundNumber].clues[clueIndex].question).toUpperCase()}</p>
       <div type="button" class="light-saber-container">
-        <button type="button" class="light-saber-sub-button">${game.allClues[0].answer}</button>
+        <button type="button" class="light-saber-sub-button">${(possibleAnswers[0]).toUpperCase()}</button>
         <div class="light-saber-handle-image"></div>
       </div>
       <div type="button" class="light-saber-container">
-        <button type="button" class="light-saber-sub-button">${game.allClues[10].answer}</button>
+        <button type="button" class="light-saber-sub-button">${(possibleAnswers[1]).toUpperCase()}</button>
         <div class="light-saber-handle-image"></div>
       </div>
       <div type="button" class="light-saber-container">
-        <button type="button" class="light-saber-sub-button">${game.allClues[20].answer}</button>
+        <button type="button" class="light-saber-sub-button">${(possibleAnswers[2]).toUpperCase()}</button>
         <div class="light-saber-handle-image"></div>
       </div>
       <div type="button" class="light-saber-container">
-        <button type="button" class="light-saber-sub-button">${game.rounds[game.roundNumber].clues[clueIndex].answer}</button>
+        <button type="button" class="light-saber-sub-button">${(possibleAnswers[3]).toUpperCase()}</button>
         <div class="light-saber-handle-image"></div>
       </div>
     </div>
@@ -81,7 +95,7 @@ const domUpdates = {
 
   evaluateAnswer: (i) => {
     $('.light-saber-container').click( (e) => {
-      game.players[game.currentPlayer].answer = $(e.target).closest('.light-saber-sub-button').html();
+      game.players[game.currentPlayer].answer = $(e.target).closest('.light-saber-sub-button').html().toUpperCase();
       if (game.rounds[game.roundNumber].clues[i].checkAnswer(game.players[game.currentPlayer].answer)) {
         game.players[game.currentPlayer].updateScore(game.rounds[game.roundNumber].clues[i].pointValue);
         domUpdates.messageFromYoda('Correct,');
@@ -89,8 +103,13 @@ const domUpdates = {
         game.players[game.currentPlayer].updateScore((- game.rounds[game.roundNumber].clues[i].pointValue))
         domUpdates.messageFromYoda('Incorrect,');
       }
+      domUpdates.updateScore();
+      $('.question-area').remove();
+    })
+  },
 
-      setTimeout( () => {
+  updateScore: () => {
+    setTimeout( () => {
         $('.answer-validation-container').remove();
         domUpdates.removeHidden();
         domUpdates.styleCurrentPlayer(game.currentPlayer);
@@ -99,9 +118,6 @@ const domUpdates = {
       $('.p2-score').text(`${game.players[1].score}`)
       $('.p3-score').text(`${game.players[2].score}`)
       domUpdates.displayAnswerScreen();
-
-      $('.question-area').remove();
-    })
   },
 
   displayAnswerScreen: () => {
@@ -114,9 +130,7 @@ const domUpdates = {
       game.roundNumber++;
       game.cluesRemaing = 16;
       setTimeout(domUpdates.populateGameBoard(), 2000)
-
     }
-    // setTimeout(domUpdates.removeHidden(), 5000)
   },
 
   removeHidden: () => {
@@ -188,7 +202,6 @@ const domUpdates = {
     $('.c1').text((keys[game.rounds[game.roundNumber].categories[2]]).split(/(?=[A-Z])/).join(' ').toUpperCase())
     $('.d1').text((keys[game.rounds[game.roundNumber].categories[3]]).split(/(?=[A-Z])/).join(' ').toUpperCase())
   },
-
 }
 
 export default domUpdates;
