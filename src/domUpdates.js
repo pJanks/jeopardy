@@ -10,13 +10,13 @@ let game;
 const domUpdates = {
 
   messageFromYoda: (message) => {
-    $('.game-board').html(`
+    $('.game-board').after(`
       <div class='answer-validation-container'>
         <div class='lower-answer-validation-container'>
           <div class='yoda-image-container'></div>
         </div>
         <div class='answer-message-container'>
-          <p class='answer-validation-message'>${message}</p>
+          <p class='answer-validation-message'>${message} your answer is!</p>
         </div>
       </div>`);
   },
@@ -47,27 +47,50 @@ const domUpdates = {
         <div class="light-saber-handle-image"></div>
       </div>
     </div>`);
-    $('.light-saber-container').click( () => {
-      game.cluesRemaining--;
-      game.currentPlayer++;
-      if (game.currentPlayer === 3) {
-        game.currentPlayer = 0
+    domUpdates.evaluateAnswer(clueIndex);
+  },
+
+  evaluateAnswer: (i) => {
+    $('.light-saber-container').click( (e) => {
+      game.players[game.currentPlayer].answer = $(e.target).closest('.light-saber-sub-button').html();
+      if (game.rounds[game.roundNumber].clues[i].checkAnswer(game.players[game.currentPlayer].answer)) {
+        game.players[game.currentPlayer].updateScore(game.rounds[game.roundNumber].clues[i].pointValue);
+        domUpdates.messageFromYoda('Correct')
+      } else if (!game.rounds[game.roundNumber].clues[i].checkAnswer(game.players[game.currentPlayer].answer)) {
+        game.players[game.currentPlayer].updateScore((- game.rounds[game.roundNumber].clues[i].pointValue))
+        domUpdates.messageFromYoda('Incorrect')
       }
-      else if (game.cluesRemaining === 0) {
-        game.roundNumber++;
-        game.cluesRemaing = 16;
-        domUpdates.populateGameBoard();
-      }
-      console.log(game);
-      $('.game-board').removeClass('hidden');
-      $('.question-area').addClass('hidden');
+      setTimeout( () => {
+        $('.answer-validation-container').remove();
+        domUpdates.removeHidden();
+      }, 2000);
+      domUpdates.displayAnswerScreen();
+
+      $('.question-area').remove();
     })
+  },
+
+  displayAnswerScreen: () => {
+    game.cluesRemaining--;
+    game.currentPlayer++;
+    if (game.currentPlayer === 3) {
+      game.currentPlayer = 0
+    }
+    else if (game.cluesRemaining === 0) {
+      game.roundNumber++;
+      game.cluesRemaing = 16;
+      setTimeout(domUpdates.populateGameBoard(), 2000)
+
+    }
+    // setTimeout(domUpdates.removeHidden(), 5000)
+  },
+
+  removeHidden: () => {
+    $('.game-board').removeClass('hidden')
   },
 
   displayQuestionScreen: e => {
     if ($(e.target).closest('.board')) {
-      console.log(e.target);
-      // $('.game-board').text('');
       domUpdates.printSingleQuestion(e.target);
     }
   },
@@ -89,7 +112,6 @@ const domUpdates = {
       if (!game) {
         game = new Game(dataInfo.categories, dataInfo.clues, nums);
       }
-      console.log(game);
       if (game.roundNumber === 0) {
       game.startGame();
 
