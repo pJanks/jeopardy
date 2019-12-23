@@ -22,6 +22,14 @@ const domUpdates = {
       </div>`);
   },
 
+  styleCurrentPlayer: (currentPlayer) => {
+    let playerContainers = ['.player-0-index-container', '.player-1-index-container', '.player-2-index-container'];
+    playerContainers.forEach(player => {
+      $(`${player}`).removeClass('active-player-style');
+    });
+    $(`.player-${currentPlayer}-index-container`).addClass('active-player-style');
+  },
+  
   randomizeAnswers: (answers) => {
     let j, x, i;
     for (i = answers.length - 1; i > 0; i--) {
@@ -60,8 +68,29 @@ const domUpdates = {
         <button type="button" class="light-saber-sub-button">${(possibleAnswers[3]).toUpperCase()}</button>
         <div class="light-saber-handle-image"></div>
       </div>
-    </div>`);
+    </div>
+    `);
     domUpdates.evaluateAnswer(clueIndex);
+  },
+
+  displayDDorFJ: (isDDorFJ) => {
+    $('.game-board').after(`
+    <div class='dd-or-fj-container'>
+
+      <p class='dd-or-fj-title'>${isDDorFJ}</p>
+
+      <h4>catagory:</h4>
+
+      <h4>Exotic French Foods</h4>
+
+      <input class='wager-input' type='number' placeholder='enter a wager here'>
+      <h4>wager may not exceed player's current score or</h4>
+      <h4>highest point value on the game board</h4>
+      <div type="button" class="start-game-button-container wager-button">
+        <button type="button" class="start-game-sub-button">submit wager</button>
+        <div class="light-saber-handle-image"></div>
+      </div>
+    </div>`);
   },
 
   evaluateAnswer: (i) => {
@@ -69,10 +98,10 @@ const domUpdates = {
       game.players[game.currentPlayer].answer = $(e.target).closest('.light-saber-sub-button').html().toUpperCase();
       if (game.rounds[game.roundNumber].clues[i].checkAnswer(game.players[game.currentPlayer].answer)) {
         game.players[game.currentPlayer].updateScore(game.rounds[game.roundNumber].clues[i].pointValue);
-        domUpdates.messageFromYoda('Correct')
+        domUpdates.messageFromYoda('Correct,');
       } else if (!game.rounds[game.roundNumber].clues[i].checkAnswer(game.players[game.currentPlayer].answer)) {
         game.players[game.currentPlayer].updateScore((- game.rounds[game.roundNumber].clues[i].pointValue))
-        domUpdates.messageFromYoda('Incorrect')
+        domUpdates.messageFromYoda('Incorrect,');
       }
       domUpdates.updateScore();
       $('.question-area').remove();
@@ -81,13 +110,14 @@ const domUpdates = {
 
   updateScore: () => {
     setTimeout( () => {
-      $('.answer-validation-container').remove();
-      domUpdates.removeHidden();
-    }, 2000);
-    $('.p1-score').text(`${game.players[0].score}`)
-    $('.p2-score').text(`${game.players[1].score}`)
-    $('.p3-score').text(`${game.players[2].score}`)
-    domUpdates.displayAnswerScreen();
+        $('.answer-validation-container').remove();
+        domUpdates.removeHidden();
+        domUpdates.styleCurrentPlayer(game.currentPlayer);
+      }, 2000);
+      $('.p1-score').text(`${game.players[0].score}`)
+      $('.p2-score').text(`${game.players[1].score}`)
+      $('.p3-score').text(`${game.players[2].score}`)
+      domUpdates.displayAnswerScreen();
   },
 
   displayAnswerScreen: () => {
@@ -132,7 +162,7 @@ const domUpdates = {
       }
       if (game.roundNumber === 0) {
       game.startGame();
-
+      domUpdates.styleCurrentPlayer(game.currentPlayer);
       $('.intro-container').addClass('hidden');
       $('.bottom').removeClass('hidden');
 
@@ -172,7 +202,6 @@ const domUpdates = {
     $('.c1').text((keys[game.rounds[game.roundNumber].categories[2]]).split(/(?=[A-Z])/).join(' ').toUpperCase())
     $('.d1').text((keys[game.rounds[game.roundNumber].categories[3]]).split(/(?=[A-Z])/).join(' ').toUpperCase())
   },
-
 }
 
 export default domUpdates;
