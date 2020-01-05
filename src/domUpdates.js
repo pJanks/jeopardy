@@ -89,13 +89,9 @@ const domUpdates = {
     let categoryIndex = game.rounds[game.roundNumber].clues[clueIndex].id
     $('.game-board').after(`
     <div class='dd-or-fj-container'>
-
       <p class='dd-or-fj-title'>${isDDorFJ}</p>
-
       <h4>catagory:</h4>
-
       <h4>${keys[(categoryIndex - 1)].split(/(?=[A-Z])/).join(' ').toLowerCase()}</h4>
-
       <input class='wager-input' type='number' placeholder='enter a wager here'>
       <h4>wager may not exceed player's current score or highest point value on the game board</h4>
       <div type="button" class="start-game-button-container wager-button">
@@ -206,7 +202,6 @@ const domUpdates = {
   },
 
   displayQuestionScreen: e => {
-    console.log(game);
     if ($(e.target).closest('.board')) {
       domUpdates.printSingleQuestion(parseInt($(e.target).attr('id')));
     }
