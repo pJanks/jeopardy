@@ -177,7 +177,7 @@ const domUpdates = {
         $('.answer-validation-container').remove();
         domUpdates.removeHidden();
         domUpdates.styleCurrentPlayer(game.currentPlayer);
-      }, 10);
+      }, 1500);
       $('.p1-score').text(`${game.players[0].score}`)
       $('.p2-score').text(`${game.players[1].score}`)
       $('.p3-score').text(`${game.players[2].score}`)
@@ -193,7 +193,7 @@ const domUpdates = {
     else if (game.cluesRemaining === 0) {
       game.roundNumber++;
       game.cluesRemaining = 16;
-      setTimeout(domUpdates.populateGameBoard(), 10)
+      setTimeout(domUpdates.populateGameBoard(), 1500)
     }
   },
 
