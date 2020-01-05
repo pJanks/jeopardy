@@ -48,7 +48,6 @@ class Game {
         this.answers[j] = x;
     }
     return answers;
-    console.log(answers);
   }
 
   instanstiatePlayers(playerOne, playerTwo, playerThree) {
