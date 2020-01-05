@@ -1,7 +1,16 @@
 import Clue from './Clue.js'
+import Game from './Game.js'
 class DailyDouble extends Clue {
-  constructor(question, pointValue, answer, id) {
-    super(question, pointValue, answer, id, true)
+  constructor(question, answer, id, pointValue) {
+    super(question, answer, id, pointValue, true)
+  }
+
+  evaluateWager(wager, playerAnswer) {
+    if (this.checkAnswer(playerAnswer)) {
+      return true
+    } else if (!this.checkAnswer(playerAnswer)) {
+      return false
+    }
   }
 }
 

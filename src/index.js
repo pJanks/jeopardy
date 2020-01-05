@@ -11,7 +11,7 @@ import Clue from './Clue.js'
 
 // fetch dataset
 const getData = () => {
-  return fetch('https://fe-apps.herokuapp.com/api/v1/gametime/1903/jeopardy/data')
+  fetch('https://fe-apps.herokuapp.com/api/v1/gametime/1903/jeopardy/data')
   .then(response => response.json())
   .then(info => {
     domUpdates.populateGameBoard(info.data);

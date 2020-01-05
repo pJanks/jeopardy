@@ -39,6 +39,17 @@ class Game {
     }
   }
 
+  shuffleAnswers(answers) {
+    let j, x, i;
+    for (i = answers.length - 1; i > 0; i--) {
+        j = Math.floor(Math.random() * (i + 1));
+        x = this.answers[i];
+        this.answers[i] = this.answers[j];
+        this.answers[j] = x;
+    }
+    return answers;
+  }
+
   instanstiatePlayers(playerOne, playerTwo, playerThree) {
     this.players.push(new Player(playerOne))
     this.players.push(new Player(playerTwo))
