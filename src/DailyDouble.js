@@ -6,7 +6,6 @@ class DailyDouble extends Clue {
   }
 
   evaluateWager(wager, playerAnswer) {
-    console.log(this.checkAnswer(playerAnswer));
     if (this.checkAnswer(playerAnswer)) {
       return true
     } else if (!this.checkAnswer(playerAnswer)) {
