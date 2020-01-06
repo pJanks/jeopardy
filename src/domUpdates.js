@@ -14,7 +14,7 @@ const domUpdates = {
           <div class='yoda-image-container'></div>
         </div>
         <div class='answer-message-container'>
-          <p class='answer-validation-message'>${message} your answer is!</p>
+          <p class='answer-validation-message'>${message}!</p>
         </div>
       </div>`);
   },
@@ -100,15 +100,29 @@ const domUpdates = {
       </div>
     </div>`);
     $('.game-board').addClass('hidden');
-    $('.wager-button').click( (e) => {
-      let wager = parseInt($('.wager-input').val());
+    $('.wager-button').click(() => {
+      let wager;
+if (game.roundNumber < 1 && game.players[game.currentPlayer].score <= 400 && 5 <= parseInt($('.wager-input').val()) && parseInt($('.wager-input').val()) <= 400) {
+        wager = parseInt($('.wager-input').val());
+      } else if (game.roundNumber < 1 && game.players[game.currentPlayer].score > 400 && parseInt($('.wager-input').val()) <= game.players[game.currentPlayer].score) {
+        wager = parseInt($('.wager-input').val());
+      }
+      else if (game.roundNumber === 1 && game.players[game.currentPlayer].score <= 800 && 5 <= parseInt($('.wager-input').val()) && parseInt($('.wager-input').val()) <= 800) {
+        wager = parseInt($('.wager-input').val());
+      } else if (game.roundNumber === 1 && game.players[game.currentPlayer].score > 800 && parseInt($('.wager-input').val()) <= game.players[game.currentPlayer].score) {
+        wager = parseInt($('.wager-input').val());
+      } else {
+        window.alert('error')
+        return
+      }
       $('.dd-or-fj-container').remove();
       $(`#${clueIndex}`).text('');
       $(`#${clueIndex}`).disabled = true;
       game.shuffleClues();
       possibleAnswers = [`${game.allClues[0].answer}`,
-      `${game.allClues[1].answer}`, `${game.allClues[2].answer}`,
-      `${game.rounds[game.roundNumber].clues[clueIndex].answer}`];
+        `${game.allClues[1].answer}`, `${game.allClues[2].answer}`,
+        `${game.rounds[game.roundNumber].clues[clueIndex].answer}`
+      ];
       domUpdates.randomizeAnswers(possibleAnswers);
       $('.game-board').after(`
         <div class='question-area'>
@@ -136,36 +150,36 @@ const domUpdates = {
           </div>
         </div>
           `);
-          $('.light-saber-container').click( (e) => {
-            game.players[game.currentPlayer].answer = $(e.target)
-            .closest('.light-saber-container').text().toLowerCase().trim();
-            if (game.rounds[game.roundNumber].clues[clueIndex]
-            .evaluateWager(wager, game.players[game.currentPlayer].answer)) {
-              game.players[game.currentPlayer].updateScore(wager)
-            } else if (!game.rounds[game.roundNumber].clues[clueIndex]
-            .evaluateWager(wager, game.players[game.currentPlayer].answer)) {
-              game.players[game.currentPlayer].updateScore(- wager)
-            }
-            domUpdates.updateScore();
-            $('.question-area').remove();
-          });
-        })
+      $('.light-saber-container').click((e) => {
+        game.players[game.currentPlayer].answer = $(e.target)
+          .closest('.light-saber-container').text().toLowerCase().trim();
+        if (game.rounds[game.roundNumber].clues[clueIndex]
+          .evaluateWager(wager, game.players[game.currentPlayer].answer)) {
+          game.players[game.currentPlayer].updateScore(wager)
+        } else if (!game.rounds[game.roundNumber].clues[clueIndex]
+          .evaluateWager(wager, game.players[game.currentPlayer].answer)) {
+          game.players[game.currentPlayer].updateScore(-wager)
+        }
+        domUpdates.updateScore();
+        $('.question-area').remove();
+      });
+    })
   },
 
   evaluateAnswer: (i) => {
     $('.light-saber-container').click( (e) => {
       game.players[game.currentPlayer].answer = $(e.target)
         .closest('.light-saber-container').text().toLowerCase().trim();
-      if (game.rounds[game.roundNumber].clues[i]
+        if (game.rounds[game.roundNumber].clues[i]
         .checkAnswer(game.players[game.currentPlayer].answer)) {
         game.players[game.currentPlayer]
         .updateScore(game.rounds[game.roundNumber].clues[i].pointValue);
-        domUpdates.messageFromYoda('Correct,');
+        domUpdates.messageFromYoda('Correct, your answer is');
       } else if (!game.rounds[game.roundNumber].clues[i]
         .checkAnswer(game.players[game.currentPlayer].answer)) {
         game.players[game.currentPlayer]
         .updateScore((- game.rounds[game.roundNumber].clues[i].pointValue))
-        domUpdates.messageFromYoda('Incorrect,');
+        domUpdates.messageFromYoda('Incorrect, your answer is');
       }
       domUpdates.updateScore();
       $('.question-area').remove();
@@ -175,6 +189,7 @@ const domUpdates = {
   updateScore: () => {
     setTimeout( () => {
         $('.answer-validation-container').remove();
+
         domUpdates.removeHidden();
         domUpdates.styleCurrentPlayer(game.currentPlayer);
       }, 1500);
@@ -193,7 +208,7 @@ const domUpdates = {
     else if (game.cluesRemaining === 0) {
       game.roundNumber++;
       game.cluesRemaining = 16;
-      setTimeout(domUpdates.populateGameBoard(), 1500)
+      setTimeout(domUpdates.populateGameBoard(), 3000)
     }
   },
 
@@ -271,6 +286,17 @@ const domUpdates = {
         domUpdates.assignRoundCategories();
   },
 
+  validateUserNames: () => {
+    if (!$('.player1-input').val() &&
+    !$('.player2-input').val() &&
+    !$('.player3-input').val()) {
+      window.alert('Enter three player names, you must!  -Yoda')
+      return false;
+    } else {
+      return true;
+    }
+  },
+
   assignRoundCategories: () => {
     keys = Object.keys(game.gameCategories)
     $('.a1').text((keys[game.rounds[game.roundNumber].categories[0]])
@@ -282,6 +308,8 @@ const domUpdates = {
     $('.d1').text((keys[game.rounds[game.roundNumber].categories[3]])
       .split(/(?=[A-Z])/).join(' ').toUpperCase())
   },
+
+
 }
 
 export default domUpdates;
