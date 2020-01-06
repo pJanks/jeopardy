@@ -37,24 +37,18 @@ describe ('default properties', () => {
     expect(clue.pointValue).to.equal(100);
   })
 
-  it('should be able to check to if the players answer is correct', () => {
-    checkAnswer();
-    expect().to.equal();
+  it('should have a dailyDouble', () => {
+    expect(clue.dailyDouble).to.equal(false);
   })
 
-  describe ('spie on checkAnswer method', () => {
-    chai.spy.on(clue, ['checkAnswer'], () => true);
+  it('should be able to check to if the players answer is correct', () => {
+    checkAnswer('bark!!!');
+    expect(clue.answer).to.equal(true);
+  })
 
-    it('should be able to evaluate a wager and check player answer', () => {
-      checkAnswer('bark!!!');
-      expect(clue.checkAnswer).to.equal(true);
-    })
-
-    chai.spy.on(clue, ['checkAnswer'], () => false);
-
-    it('should be able to evaluate a wager and check player answer', () => {
-      checkAnswer('ruff ruff!!!');
-      expect(clue.checkAnswer).to.eqaul(false);
-});
+  it('should be able to check to if the players answer is incorrect', () => {
+    checkAnswer('ruff ruff!!!');
+    expect(clue.answer).to.equal(false);
+  })
 });
 });
