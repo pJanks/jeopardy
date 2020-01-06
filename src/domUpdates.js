@@ -100,15 +100,29 @@ const domUpdates = {
       </div>
     </div>`);
     $('.game-board').addClass('hidden');
-    $('.wager-button').click( (e) => {
-      let wager = parseInt($('.wager-input').val());
+    $('.wager-button').click(() => {
+      let wager;
+if (game.roundNumber < 1 && game.players[game.currentPlayer].score <= 400 && 5 <= parseInt($('.wager-input').val()) && parseInt($('.wager-input').val()) <= 400) {
+        wager = parseInt($('.wager-input').val());
+      } else if (game.roundNumber < 1 && game.players[game.currentPlayer].score > 400 && parseInt($('.wager-input').val()) <= game.players[game.currentPlayer].score) {
+        wager = parseInt($('.wager-input').val());
+      }
+      else if (game.roundNumber === 1 && game.players[game.currentPlayer].score <= 800 && 5 <= parseInt($('.wager-input').val()) && parseInt($('.wager-input').val()) <= 800) {
+        wager = parseInt($('.wager-input').val());
+      } else if (game.roundNumber === 1 && game.players[game.currentPlayer].score > 800 && parseInt($('.wager-input').val()) <= game.players[game.currentPlayer].score) {
+        wager = parseInt($('.wager-input').val());
+      } else {
+        window.alert('error')
+        return
+      }
       $('.dd-or-fj-container').remove();
       $(`#${clueIndex}`).text('');
       $(`#${clueIndex}`).disabled = true;
       game.shuffleClues();
       possibleAnswers = [`${game.allClues[0].answer}`,
-      `${game.allClues[1].answer}`, `${game.allClues[2].answer}`,
-      `${game.rounds[game.roundNumber].clues[clueIndex].answer}`];
+        `${game.allClues[1].answer}`, `${game.allClues[2].answer}`,
+        `${game.rounds[game.roundNumber].clues[clueIndex].answer}`
+      ];
       domUpdates.randomizeAnswers(possibleAnswers);
       $('.game-board').after(`
         <div class='question-area'>
@@ -136,20 +150,20 @@ const domUpdates = {
           </div>
         </div>
           `);
-          $('.light-saber-container').click( (e) => {
-            game.players[game.currentPlayer].answer = $(e.target)
-            .closest('.light-saber-container').text().toLowerCase().trim();
-            if (game.rounds[game.roundNumber].clues[clueIndex]
-            .evaluateWager(wager, game.players[game.currentPlayer].answer)) {
-              game.players[game.currentPlayer].updateScore(wager)
-            } else if (!game.rounds[game.roundNumber].clues[clueIndex]
-            .evaluateWager(wager, game.players[game.currentPlayer].answer)) {
-              game.players[game.currentPlayer].updateScore(- wager)
-            }
-            domUpdates.updateScore();
-            $('.question-area').remove();
-          });
-        })
+      $('.light-saber-container').click((e) => {
+        game.players[game.currentPlayer].answer = $(e.target)
+          .closest('.light-saber-container').text().toLowerCase().trim();
+        if (game.rounds[game.roundNumber].clues[clueIndex]
+          .evaluateWager(wager, game.players[game.currentPlayer].answer)) {
+          game.players[game.currentPlayer].updateScore(wager)
+        } else if (!game.rounds[game.roundNumber].clues[clueIndex]
+          .evaluateWager(wager, game.players[game.currentPlayer].answer)) {
+          game.players[game.currentPlayer].updateScore(-wager)
+        }
+        domUpdates.updateScore();
+        $('.question-area').remove();
+      });
+    })
   },
 
   evaluateAnswer: (i) => {
