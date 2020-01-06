@@ -14,7 +14,7 @@ const domUpdates = {
           <div class='yoda-image-container'></div>
         </div>
         <div class='answer-message-container'>
-          <p class='answer-validation-message'>${message} your answer is!</p>
+          <p class='answer-validation-message'>${message}!</p>
         </div>
       </div>`);
   },
@@ -156,16 +156,16 @@ const domUpdates = {
     $('.light-saber-container').click( (e) => {
       game.players[game.currentPlayer].answer = $(e.target)
         .closest('.light-saber-container').text().toLowerCase().trim();
-      if (game.rounds[game.roundNumber].clues[i]
+        if (game.rounds[game.roundNumber].clues[i]
         .checkAnswer(game.players[game.currentPlayer].answer)) {
         game.players[game.currentPlayer]
         .updateScore(game.rounds[game.roundNumber].clues[i].pointValue);
-        domUpdates.messageFromYoda('Correct,');
+        domUpdates.messageFromYoda('Correct, your answer is');
       } else if (!game.rounds[game.roundNumber].clues[i]
         .checkAnswer(game.players[game.currentPlayer].answer)) {
         game.players[game.currentPlayer]
         .updateScore((- game.rounds[game.roundNumber].clues[i].pointValue))
-        domUpdates.messageFromYoda('Incorrect,');
+        domUpdates.messageFromYoda('Incorrect, your answer is');
       }
       domUpdates.updateScore();
       $('.question-area').remove();
@@ -175,6 +175,7 @@ const domUpdates = {
   updateScore: () => {
     setTimeout( () => {
         $('.answer-validation-container').remove();
+
         domUpdates.removeHidden();
         domUpdates.styleCurrentPlayer(game.currentPlayer);
       }, 1500);
@@ -193,7 +194,7 @@ const domUpdates = {
     else if (game.cluesRemaining === 0) {
       game.roundNumber++;
       game.cluesRemaining = 16;
-      setTimeout(domUpdates.populateGameBoard(), 1500)
+      setTimeout(domUpdates.populateGameBoard(), 3000)
     }
   },
 
@@ -271,6 +272,17 @@ const domUpdates = {
         domUpdates.assignRoundCategories();
   },
 
+  validateUserNames: () => {
+    if (!$('.player1-input').val() &&
+    !$('.player2-input').val() &&
+    !$('.player3-input').val()) {
+      window.alert('Enter three player names, you must!  -Yoda')
+      return false;
+    } else {
+      return true;
+    }
+  },
+
   assignRoundCategories: () => {
     keys = Object.keys(game.gameCategories)
     $('.a1').text((keys[game.rounds[game.roundNumber].categories[0]])
@@ -282,6 +294,8 @@ const domUpdates = {
     $('.d1').text((keys[game.rounds[game.roundNumber].categories[3]])
       .split(/(?=[A-Z])/).join(' ').toUpperCase())
   },
+
+
 }
 
 export default domUpdates;
