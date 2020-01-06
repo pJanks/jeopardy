@@ -41,5 +41,20 @@ describe ('default properties', () => {
     checkAnswer();
     expect().to.equal();
   })
+
+  describe ('spie on checkAnswer method', () => {
+    chai.spy.on(clue, ['checkAnswer'], () => true);
+
+    it('should be able to evaluate a wager and check player answer', () => {
+      evaluateWager('bark!!!');
+      expect(clue.checkAnswer).to.equal(true);
+    })
+
+    chai.spy.on(clue, ['checkAnswer'], () => false);
+
+    it('should be able to evaluate a wager and check player answer', () => {
+      evaluateWager('ruff ruff!!!');
+      expect(clue.checkAnswer).to.eqaul(false);
+});
 });
 });
