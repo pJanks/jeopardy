@@ -33,10 +33,6 @@ a Jeopardy game with a South Park theme
 ![DDCB0C3B-B6B2-4C6D-9E57-D441CEE182FE_1_105_c](https://user-images.githubusercontent.com/49410633/71939612-2d748100-31ab-11ea-93a5-2dbe2186d7e4.jpeg)
 ![5F6321AB-9FDF-4F0E-9B2F-4BA11E3744E2_1_105_c](https://user-images.githubusercontent.com/49410633/71939616-2f3e4480-31ab-11ea-83b7-1f93783ad01c.jpeg)
 
-### Directions for User
-- how to use
-- how to install
-
 ### List of Contributors with links to Github accounts
 - Zachary Nemeroff https://github.com/ZaneMeroff
 - Trond Makonese https://github.com/Trond240
