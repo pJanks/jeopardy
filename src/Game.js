@@ -1,6 +1,7 @@
 import Player from './Player.js'
 import Round from './Round.js'
 import Clue from './Clue.js'
+import DailyDouble from './DailyDouble.js'
 import $ from 'jquery'
 
 class Game {
@@ -68,19 +69,36 @@ class Game {
   )}
 
   instanstiateClues() {
-    let sortedQuestions;
-    let clueObject;
-    this.findClues(100);
-    this.findClues(200);
-    this.findClues(300);
-    this.findClues(400);
-    sortedQuestions = this.rounds[this.roundNumber].cluesData.sort((a, b) => {
-      return a.categoryId - b.categoryId;
-    });
-    this.rounds[this.roundNumber].cluesData.forEach(clue => {
-      clueObject = new Clue(clue.question, clue.answer, clue.categoryId, clue.pointValue);
-      this.rounds[this.roundNumber].clues.push(clueObject);
-    })
+    if (this.roundNumber === 2) {
+      let sortedQuestions;
+      let clueObject;
+      this.findClues(100);
+      this.findClues(200);
+      this.findClues(300);
+      this.findClues(400);
+      sortedQuestions = this.rounds[this.roundNumber].cluesData.sort((a, b) => {
+        return a.categoryId - b.categoryId;
+      });
+      this.rounds[this.roundNumber].cluesData.forEach(clue => {
+        clueObject = new DailyDouble(clue.question, clue.answer, clue.categoryId, clue.pointValue);
+        this.rounds[this.roundNumber].clues.push(clueObject);
+      })
+    } else {
+      let sortedQuestions;
+      let clueObject;
+      this.findClues(100);
+      this.findClues(200);
+      this.findClues(300);
+      this.findClues(400);
+      sortedQuestions = this.rounds[this.roundNumber].cluesData.sort((a, b) => {
+        return a.categoryId - b.categoryId;
+      });
+      this.rounds[this.roundNumber].cluesData.forEach(clue => {
+        clueObject = new Clue(clue.question, clue.answer, clue.categoryId, clue.pointValue);
+        this.rounds[this.roundNumber].clues.push(clueObject);
+      })
+
+    }
   }
 }
 
