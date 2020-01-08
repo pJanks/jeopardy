@@ -7,7 +7,10 @@ a Jeopardy game with a South Park theme
 
 ### Introduction to Project
 - what is your project about? 
+  1. For this project we needed to solidify our understanding of object-oriented programming(OOP) by building out a game show.
+
 - Project Learnbing Goals
+  
   1. Write a program from scratch
   2. Synthesize knowledge of OOP, classes, and JS fundamentals to create a playable game
   3. Demonstrate good GitHub collaboration and workflow within a large group
