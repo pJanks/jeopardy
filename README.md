@@ -7,6 +7,13 @@ a Jeopardy game with a South Park theme
 
 ### Introduction to Project
 - what is your project about? 
+- Project Learnbing Goals
+ 1. Write a program from scratch
+ 2. Synthesize knowledge of OOP, classes, and JS fundamentals to create a playable game
+ 3. Demonstrate good GitHub collaboration and workflow within a large group
+ 4. Write modular, reusable code that follows SRP (Single Responibility Principle)
+ 5. Create a robust test suite that thoroughly tests all functionality of a client-side application
+ 6. Implement array iterator and mutator methods to work with game data
 - why was it made?
 
 ### what technologies were used?
