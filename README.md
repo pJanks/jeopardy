@@ -34,13 +34,13 @@ a Jeopardy game with a South Park theme
 ![5F6321AB-9FDF-4F0E-9B2F-4BA11E3744E2_1_105_c](https://user-images.githubusercontent.com/49410633/71939616-2f3e4480-31ab-11ea-83b7-1f93783ad01c.jpeg)
 
 ### How to install and clone
-step 1. clone repo to desired location
-step 2. cd to the direcotry where you cloned the repo
-step 3. run npm install
-step 4. run npm start 
-step 5. look for words "project is running at http://localhost..." and copy this address 
-step 6. open your browser and paste the live server URL into the adress bar
-step 7. ENJOY STARWARS JEOPARDY!!!
+- step 1. clone repo to desired location
+- step 2. cd to the direcotry where you cloned the repo
+- step 3. run npm install
+- step 4. run npm start 
+- step 5. look for words "project is running at http://localhost..." and copy this address 
+- step 6. open your browser and paste the live server URL into the adress bar
+- step 7. ENJOY STARWARS JEOPARDY!!!
 
 ### List of Contributors with links to Github accounts
 - Zachary Nemeroff https://github.com/ZaneMeroff
