@@ -10,6 +10,10 @@ const domUpdates = {
     location.reload();
   }),
 
+  activateLeaderBoard: $('.leader-board-button').on('click', () => {
+    window.alert('Leaderboard Coming Soon!');
+  }),
+
   messageFromYoda: (message) => {
     $('.game-board').after(`
       <div class='answer-validation-container'>
