@@ -17,9 +17,8 @@ a Jeopardy game with a South Park theme
   4. Write modular, reusable code that follows SRP (Single Responibility Principle)
   5. Create a robust test suite that thoroughly tests all functionality of a client-side application
   6. Implement array iterator and mutator methods to work with game data
-- why was it made?
 
-### what technologies were used?
+### Technologies Used?
 - HTML
 - CSS & SASS
 - vanilla JavaScript
@@ -46,12 +45,4 @@ a Jeopardy game with a South Park theme
 - Zachary Nemeroff https://github.com/ZaneMeroff
 - Trond Makonese https://github.com/Trond240
 - Johnny Cassidy https://github.com/pJanks
-
-### Future Steps or iterations?
-
-### Technologies Used
-- HTML
-- CSS & SASS
-- vanilla JavaScript
-- jQuery
 
