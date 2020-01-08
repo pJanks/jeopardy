@@ -8,8 +8,7 @@ a Jeopardy game with a South Park theme
 ### Introduction to Project
 For this project we needed to solidify our understanding of object-oriented programming(OOP) by building out a game show. Our game show is a StarWars themed jeopardy game. The game is developed for 3 players and will have three rounds. For the first 2 rounds players turns will alternate until all clues and questions have been removed from the game board. After the second round players will enter the final jeopardy round where they can make a wager based on the points they have with a final category. All questions and clues are fethced from a live API upon page load.   
 
-- Project Learning Goals
-  
+### Project Learning Goals  
   1. Write a program from scratch
   2. Synthesize knowledge of OOP, classes, and JS fundamentals to create a playable game
   3. Demonstrate good GitHub collaboration and workflow within a large group
