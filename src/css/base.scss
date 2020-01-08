@@ -7,7 +7,7 @@ $light-saber-blue: #0043ff;
 }
 
 body {
-  background-image: url(../images/retro_wave_background.jpg);
+  background-image: url("../images/retro_wave_background.jpg");
   background-size: cover;
   display: flex;
   flex-direction: column;
@@ -22,13 +22,18 @@ h1 {
   overflow: auto;
 }
 
-h2, h3 {
+h2,
+h3 {
   color: #FFFFFF;
   font-size: 100%;
   overflow: auto;
 }
 
-p, .a1, .b1, .c1, .d1 {
+.a1,
+.b1,
+.c1,
+.d1,
+p {
   color: #FFFFFF;
   font-size: 90%;
   text-align: center;
@@ -38,7 +43,7 @@ p, .a1, .b1, .c1, .d1 {
   align-items: center;
   background: linear-gradient(0deg, $game-board-color 0%, rgba(254,0,255,1) 50%, $game-board-color 100%);
   bottom: 20%;
-  box-shadow: 0px 0px 50px 80px $game-board-color;
+  box-shadow: 0 0 50px 80px $game-board-color;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -47,13 +52,13 @@ p, .a1, .b1, .c1, .d1 {
   width: 100%;
 }
 
-.player1-icon,
-.player2-icon,
-.player3-icon,
 .p1-avatar,
 .p2-avatar,
-.p3-avatar {
-  background-image: url(../images/bb8_n.png);
+.p3-avatar,
+.player1-icon,
+.player2-icon,
+.player3-icon {
+  background-image: url("../images/bb8_n.png");
   background-size: cover;
   border: 2px solid $light-saber-blue;
   border-radius: 35px;
@@ -62,14 +67,14 @@ p, .a1, .b1, .c1, .d1 {
   z-index: 2;
 }
 
-.player2-icon,
-.p2-avatar {
-  background-image: url(../images/c3po_n.png);
+.p2-avatar,
+.player2-icon {
+  background-image: url("../images/c3po_n.png");
 }
 
-.player3-icon,
-.p3-avatar {
-  background-image: url(../images/r2d2_n.png);
+.p3-avatar,
+.player3-icon {
+  background-image: url("../images/r2d2_n.png");
 }
 
 .p1-avatar,
@@ -95,17 +100,17 @@ p, .a1, .b1, .c1, .d1 {
   font-size: 120%;
   height: 50px;
   margin-left: -8%;
-  opacity: .6;
+  opacity: 0.6;
   text-align: center;
   width: 350px;
 }
 
-.start-game-button-container,
-.light-saber-container {
+.light-saber-container,
+.start-game-button-container {
   cursor: pointer;
   display: flex;
-  margin: .7%;
-  opacity: .8;
+  margin: 0.7%;
+  opacity: 0.8;
 }
 
 .start-game-button-container {
@@ -113,14 +118,14 @@ p, .a1, .b1, .c1, .d1 {
 }
 
 .light-saber-handle-image {
-  background-image: url(../images/light_saber_handle.png);
+  background-image: url("../images/light_saber_handle.png");
   background-size: cover;
   height: 40px;
   width: 150px;
 }
 
-.start-game-sub-button,
-.light-saber-sub-button {
+.light-saber-sub-button,
+.start-game-sub-button {
   background-color: $light-saber-blue;
   border: none;
   border-bottom-left-radius: 20px;
@@ -133,14 +138,15 @@ p, .a1, .b1, .c1, .d1 {
   width: 280px;
 }
 
-.start-game-button-container:hover,
-.light-saber-container:hover {
+.light-saber-container:hover,
+.start-game-button-container:hover {
   opacity: 1;
   transform: scale(1.08);
-  .start-game-sub-button,
-  .light-saber-sub-button {
+
+  .light-saber-sub-button,
+  .start-game-sub-button {
     background-color: #97C9FE;
-    box-shadow: 0px 0px 50px 40px $light-saber-blue;
+    box-shadow: 0 0 50px 40px $light-saber-blue;
     color: black;
     cursor: pointer;
   }
@@ -166,7 +172,9 @@ p, .a1, .b1, .c1, .d1 {
 
 .active-player-style {
   background-color: rgba(74, 244, 255, 1);
-  h2, h3 {
+
+  h2,
+  h3 {
     color: #000000;
   }
 }
@@ -191,7 +199,7 @@ p, .a1, .b1, .c1, .d1 {
 
 .leader-board-button:hover,
 .new-game-button:hover {
-  box-shadow: 0px 0px 60px 40px $game-board-color;
+  box-shadow: 0 0 60px 40px $game-board-color;
   cursor: pointer;
 }
 
@@ -203,12 +211,7 @@ p, .a1, .b1, .c1, .d1 {
 .game-board {
   display: grid;
   grid-template-rows: auto;
-  grid-template-areas:
-    "a f k p"
-    "b g l q"
-    "c h m r"
-    "d i n s"
-    "e j o t";
+  grid-template-areas: "a f k p" "b g l q" "c h m r" "d i n s" "e j o t";
   grid-template-columns: 1fr 1fr 1fr 1fr;
   width: 60%;
 }
@@ -222,7 +225,7 @@ p, .a1, .b1, .c1, .d1 {
 }
 
 .number {
-  transition: transform .3s;
+  transition: transform 0.3s;
 }
 
 .number:hover {
@@ -267,7 +270,7 @@ p, .a1, .b1, .c1, .d1 {
 }
 
 .yoda-image-container {
-  background-image: url(../images/yoda_image.png);
+  background-image: url("../images/yoda_image.png");
   background-size: contain;
   background-repeat: no-repeat;
   height: 100%;
@@ -299,7 +302,7 @@ p, .a1, .b1, .c1, .d1 {
   font-size: 100%;
   height: 40px;
   margin: 1%;
-  transition: transform .3s;
+  transition: transform 0.3s;
   width: 50%;
 }
 
@@ -436,13 +439,13 @@ h4 {
   text-align: center;
   text-transform: uppercase;
 }
-
 @keyframes fade-in {
-  0%{
+  0% {
     opacity: 0;
     filter: blur(10px);
   }
-  100%{
+
+  100% {
     opacity: 1;
     filter: blur(0px);
   }

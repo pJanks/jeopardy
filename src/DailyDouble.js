@@ -1,5 +1,4 @@
 import Clue from './Clue.js'
-import Game from './Game.js'
 class DailyDouble extends Clue {
   constructor(question, answer, id, pointValue) {
     super(question, answer, id, pointValue, true)
