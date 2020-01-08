@@ -2,49 +2,49 @@ $game-board-color: rgba(0,247,255,0.5);
 $light-saber-blue: #0043ff;
 
 * {
-  margin: 0;
   font-family: Orbitron;
+  margin: 0;
 }
 
 body {
   background-image: url(../images/retro_wave_background.jpg);
   background-size: cover;
   display: flex;
-  justify-content: center;
   flex-direction: column;
+  justify-content: center;
 }
 
 h1 {
-  overflow: auto;
   color: #FFFFFF;
+  font-size: 250%;
   text-align: center;
   text-transform: uppercase;
-  font-size: 250%;
+  overflow: auto;
 }
 
 h2, h3 {
-  overflow: auto;
   color: #FFFFFF;
   font-size: 100%;
+  overflow: auto;
 }
 
 p, .a1, .b1, .c1, .d1 {
-  text-align: center;
   color: #FFFFFF;
   font-size: 90%;
+  text-align: center;
 }
 
 .intro-container {
+  align-items: center;
   background: linear-gradient(0deg, $game-board-color 0%, rgba(254,0,255,1) 50%, $game-board-color 100%);
+  bottom: 20%;
   box-shadow: 0px 0px 50px 80px $game-board-color;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   position: absolute;
   top: 25%;
-  bottom: 20%;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
 }
 
 .player1-icon,
@@ -54,8 +54,8 @@ p, .a1, .b1, .c1, .d1 {
 .p2-avatar,
 .p3-avatar {
   background-image: url(../images/bb8_n.png);
-  border: 2px solid $light-saber-blue;
   background-size: cover;
+  border: 2px solid $light-saber-blue;
   border-radius: 35px;
   height: 70px;
   width: 70px;
@@ -83,28 +83,28 @@ p, .a1, .b1, .c1, .d1 {
 .player1-icon-container,
 .player2-icon-container,
 .player3-icon-container {
-  display: flex;
   align-items: center;
+  display: flex;
   margin: 1%;
 }
 
 .player1-input,
 .player2-input,
 .player3-input {
-  width: 350px;
-  height: 50px;
   border-radius: 30px;
   font-size: 120%;
-  text-align: center;
-  opacity: .6;
+  height: 50px;
   margin-left: -8%;
+  opacity: .6;
+  text-align: center;
+  width: 350px;
 }
 
 .start-game-button-container,
 .light-saber-container {
+  cursor: pointer;
   display: flex;
   margin: .7%;
-  cursor: pointer;
   opacity: .8;
 }
 
@@ -115,33 +115,30 @@ p, .a1, .b1, .c1, .d1 {
 .light-saber-handle-image {
   background-image: url(../images/light_saber_handle.png);
   background-size: cover;
-  width: 150px;
   height: 40px;
-  // margin-top: 1px;
+  width: 150px;
 }
 
 .start-game-sub-button,
 .light-saber-sub-button {
   background-color: $light-saber-blue;
   border: none;
-  color: #FFFFFF;
-  margin-top: 2%;
-  width: 280px;
-  height: 23px;
-  border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
+  border-top-left-radius: 20px;
+  color: #FFFFFF;
   font-size: 100%;
+  height: 23px;
+  margin-top: 2%;
   text-align: center;
+  width: 280px;
 }
 
 .start-game-button-container:hover,
 .light-saber-container:hover {
-  transform: scale(1.08);
   opacity: 1;
+  transform: scale(1.08);
   .start-game-sub-button,
   .light-saber-sub-button {
-    // position: absolute;
-    // animation: animate-right 1s;
     background-color: #97C9FE;
     box-shadow: 0px 0px 50px 40px $light-saber-blue;
     color: black;
@@ -149,42 +146,22 @@ p, .a1, .b1, .c1, .d1 {
   }
 }
 
-
-// @keyframes animate-right {
-// 0% {
-//     right: -300px;
-//     width: 0px;
-//     opacity: 0;
-// }
-//
-// 100% {
-//     right: 0;
-//     width: 400px;
-//     opacity: 1;
-// }
-// }
-
-
-// .fade-out-animation {
-//   animation: fade-out 2s 1;
-// }
-
 .top {
-  display: flex;
-  justify-content: space-around;
   align-items: center;
+  display: flex;
   height: 17vh;
+  justify-content: space-around;
 }
 
 .player-0-index-container,
 .player-1-index-container,
 .player-2-index-container {
-  margin-top: 5%;
-  display: flex;
   background-color: rgba(122, 0, 255, .5);
-  height: 54px;
-  width: 300px;
   border-radius: 50px;
+  display: flex;
+  height: 54px;
+  margin-top: 5%;
+  width: 300px;
 }
 
 .active-player-style {
@@ -205,17 +182,17 @@ p, .a1, .b1, .c1, .d1 {
 .new-game-button {
   background-color: #00f4ff;
   border: none;
-  height: 50px;
-  width: 10%;
   border-radius: 10px;
   font-size: 80%;
+  height: 50px;
   text-transform: uppercase;
+  width: 10%;
 }
 
 .leader-board-button:hover,
 .new-game-button:hover {
-  cursor: pointer;
   box-shadow: 0px 0px 60px 40px $game-board-color;
+  cursor: pointer;
 }
 
 .middle {
@@ -224,9 +201,7 @@ p, .a1, .b1, .c1, .d1 {
 }
 
 .game-board {
-  width: 60%;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: auto;
   grid-template-areas:
     "a f k p"
@@ -234,14 +209,16 @@ p, .a1, .b1, .c1, .d1 {
     "c h m r"
     "d i n s"
     "e j o t";
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  width: 60%;
 }
 
 .board {
-  padding: 13%;
   animation: fade-in 2s 1;
-  font-size: 100%;
-  border: 1px dotted #FFFFFF;
   background-color: rgba(122, 0, 255, .5);
+  border: 1px dotted #FFFFFF;
+  font-size: 100%;
+  padding: 13%;
 }
 
 .number {
@@ -257,33 +234,35 @@ p, .a1, .b1, .c1, .d1 {
   cursor: pointer;
 }
 
-.a1:hover, .b1:hover,
-.c1:hover, .d1:hover {
-  cursor: default;
+.a1:hover,
+.b1:hover,
+.c1:hover,
+.d1:hover {
   background-color: rgba(122, 0, 255, .5);
+  cursor: default;
 }
 
 .question-area {
+  align-items: center;
   background-color: rgba(122, 0, 255, .5);
+  border: 2px dotted #FFFFFF;
+  bottom: 20%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  position: absolute;
-  border: 2px dotted #FFFFFF;
-  top: 20%;
   left: 20%;
-  bottom: 20%;
+  position: absolute;
+  top: 20%;
   width: 60%;
 }
 
 .answer-validation-container {
   background-color: rgba(122, 0, 255, .5);
-  display: flex;
-  position: absolute;
   border: 2px dotted #FFFFFF;
-  top: 20%;
-  left: 20%;
   bottom: 20%;
+  display: flex;
+  left: 20%;
+  position: absolute;
+  top: 20%;
   width: 60%;
 }
 
@@ -296,38 +275,38 @@ p, .a1, .b1, .c1, .d1 {
 }
 
 .answer-message-container {
-  margin-top: 10%;
-  margin-right: 20%;
   display: flex;
+  margin-right: 20%;
+  margin-top: 10%;
   flex-direction: column;
   width: 100%;
 }
 
 .answer-validation-message {
-  font-weight: bolder;
   font-size: 120%;
+  font-weight: bolder;
 }
 
 .question {
-  text-align: center;
-  margin: 5%;
   font-size: 130%;
+  margin: 5%;
+  text-align: center;
 }
 
 .answer-button {
-  margin: 1%;
-  height: 40px;
-  width: 50%;
+  border: none;
   border-radius: 10px;
   font-size: 100%;
+  height: 40px;
+  margin: 1%;
   transition: transform .3s;
-  border: none;
+  width: 50%;
 }
 
 .answer-button:hover {
-  transform: scale(1.09);
-  cursor: pointer;
   background-color: #35FFF0;
+  cursor: pointer;
+  transform: scale(1.09);
 }
 
 .left-column,
@@ -337,8 +316,8 @@ p, .a1, .b1, .c1, .d1 {
 
 .bottom {
   display: flex;
-  justify-content: space-around;
   height: 33vh;
+  justify-content: space-around;
 }
 
 .a1 {
@@ -422,18 +401,18 @@ p, .a1, .b1, .c1, .d1 {
 }
 
 .dd-or-fj-container {
+  align-items: center;
   background-color: rgba(122, 0, 255, .5);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   width: 100%;
 }
 
 h4 {
+  color: #FFFFFF;
   font-weight: normal;
   font-size: 120%;
-  color: #FFFFFF;
 }
 
 .dd-or-fj-title {
@@ -442,12 +421,12 @@ h4 {
 }
 
 .wager-input {
-  width: 230px;
-  height: 30px;
   border-radius: 30px;
   font-size: 100%;
-  text-align: center;
+  height: 30px;
   margin: 3%;
+  text-align: center;
+  width: 230px;
 }
 
 @keyframes fade-in {
@@ -460,17 +439,6 @@ h4 {
     filter: blur(0px);
   }
 }
-
-// @keyframes fade-out {
-//   0%{
-//     opacity: 1;
-//     filter: blur(0px);
-//   }
-//   100%{
-//     opacity: 0;
-//     filter: blur(10px);
-//   }
-// }
 
 .hidden {
   display: none;
