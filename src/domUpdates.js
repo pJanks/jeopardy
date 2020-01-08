@@ -5,12 +5,6 @@ import DailyDouble from './DailyDouble.js'
 let game, possibleAnswers, clueIndex, keys;
 const domUpdates = {
 
-  //   refreshPage: () => {
-  //     $('.new-game-button').click( () => {
-  //     location.reload();
-  //   });
-  // },
-
   messageFromYoda: (message) => {
     $('.game-board').after(`
       <div class='answer-validation-container'>
@@ -101,7 +95,8 @@ const domUpdates = {
       <h4>catagory:</h4>
       <h4>${keys[(categoryIndex - 1)].split(/(?=[A-Z])/).join(' ').toLowerCase()}</h4>
       <input class='wager-input' type='number' placeholder='enter a wager here'>
-      <h4>wager may not exceed player's current score or highest point value on the game board</h4>
+      <h4>wager may not exceed player's current score or</h4>
+      <h4>highest point value on the game board</h4>
       <div type="button" class="start-game-button-container wager-button">
       <button type="button" class="start-game-sub-button">submit wager</button>
       <div class="light-saber-handle-image"></div>
@@ -402,7 +397,7 @@ const domUpdates = {
       setTimeout(() => {
         $('.answer-validation-container').remove();
         domUpdates.styleCurrentPlayer(game.currentPlayer);
-      }, 10);
+      }, 1500);
       $('.p1-score').text(`${game.players[0].score}`)
       $('.p2-score').text(`${game.players[1].score}`)
       $('.p3-score').text(`${game.players[2].score}`)
@@ -411,7 +406,7 @@ const domUpdates = {
       setTimeout(() => {
         $('.answer-validation-container').remove();
         domUpdates.styleCurrentPlayer(game.currentPlayer);
-      }, 10);
+      }, 1500);
       $('.p1-score').text(`${game.players[0].score}`)
       $('.p2-score').text(`${game.players[1].score}`)
       $('.p3-score').text(`${game.players[2].score}`)
@@ -422,7 +417,7 @@ const domUpdates = {
         $('.answer-validation-container').remove();
         domUpdates.removeHidden();
         domUpdates.styleCurrentPlayer(game.currentPlayer);
-      }, 10);
+      }, 1500);
       $('.p1-score').text(`${game.players[0].score}`)
       $('.p2-score').text(`${game.players[1].score}`)
       $('.p3-score').text(`${game.players[2].score}`)
@@ -438,7 +433,7 @@ const domUpdates = {
     } else if (game.cluesRemaining === 0) {
       game.roundNumber++;
       game.cluesRemaining = 16;
-      setTimeout(domUpdates.populateGameBoard(), 10)
+      setTimeout(domUpdates.populateGameBoard(), 1500)
     }
   },
 
@@ -529,7 +524,7 @@ const domUpdates = {
       winner = 'Player 3'
     }
     $('.game-board').css({ 'display' : 'flex' })
-    $('.game-board').html(`<h1>${winner} wins</h1>`);
+    $('.winner-message-area').html(`<h1 class='winning-message'>${winner} wins!</h1>`);
     $('dd-or-fj-container').remove()
   },
 
