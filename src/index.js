@@ -1,5 +1,3 @@
-// Do not delete or rename this file ********
-
 // import statements
 import $ from 'jquery';
 import './css/base.scss';
