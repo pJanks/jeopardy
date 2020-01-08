@@ -5,6 +5,11 @@ import DailyDouble from './DailyDouble.js'
 let game, possibleAnswers, clueIndex, keys;
 const domUpdates = {
 
+
+  refreshPage: $('.new-game-button').on('click', () => {
+    location.reload();
+  }),
+
   messageFromYoda: (message) => {
     $('.game-board').after(`
       <div class='answer-validation-container'>
@@ -169,15 +174,17 @@ const domUpdates = {
         });
       })
     } else if (game.currentPlayer < 1 && isDDorFJ === 'Final Jeopardy') {
-      $('.game-board').css({ 'display' : 'none'})
+      $('.game-board').css({
+        'display': 'none'
+      })
       $('.game-board').html('')
       if (game.roundNumber === 2 && game.players[game.currentPlayer].score <= 0) {
         $('.question-area').remove();
         $('.dd-or-fj-container').remove();
-       window.alert('You don\'t have enough to play Final Jeopardy');
-       game.currentPlayer++;
-       domUpdates.displayDDorFJ('Final Jeopardy', 1)
-     }
+        window.alert('You don\'t have enough to play Final Jeopardy');
+        game.currentPlayer++;
+        domUpdates.displayDDorFJ('Final Jeopardy', 1)
+      }
       $('.wager-button').click(() => {
         let wager;
         if (game.roundNumber === 2 && game.players[game.currentPlayer].score > 0 && 5 <= parseInt($('.wager-input').val()) && parseInt($('.wager-input').val()) <= game.players[game.currentPlayer].score) {
@@ -237,14 +244,14 @@ const domUpdates = {
           domUpdates.displayDDorFJ('Final Jeopardy', 1)
         });
       })
-    }  else if (game.currentPlayer === 1 && isDDorFJ === 'Final Jeopardy') {
+    } else if (game.currentPlayer === 1 && isDDorFJ === 'Final Jeopardy') {
       if (game.roundNumber === 2 && game.players[game.currentPlayer].score <= 0) {
         $('.question-area').remove();
         $('.dd-or-fj-container').remove();
-       window.alert('You don\'t have enough to play Final Jeopardy');
-       game.currentPlayer++
-       domUpdates.displayDDorFJ('Final Jeopardy', 2)
-     }
+        window.alert('You don\'t have enough to play Final Jeopardy');
+        game.currentPlayer++
+        domUpdates.displayDDorFJ('Final Jeopardy', 2)
+      }
       $('.wager-button').click(() => {
         let wager;
         if (game.roundNumber === 2 && game.players[game.currentPlayer].score > 0 && 5 <= parseInt($('.wager-input').val()) && parseInt($('.wager-input').val()) <= game.players[game.currentPlayer].score) {
@@ -308,8 +315,8 @@ const domUpdates = {
         $('.question-area').remove();
         $('.dd-or-fj-container').remove();
         domUpdates.displayWinner();
-       window.alert('You don\'t have enough to play Final Jeopardy');
-     }
+        window.alert('You don\'t have enough to play Final Jeopardy');
+      }
       $('.wager-button').click(() => {
         let wager;
         if (game.roundNumber === 2 && game.players[game.currentPlayer].score > 0 && 5 <= parseInt($('.wager-input').val()) && parseInt($('.wager-input').val()) <= game.players[game.currentPlayer].score) {
@@ -401,7 +408,7 @@ const domUpdates = {
       $('.p2-score').text(`${game.players[1].score}`)
       $('.p3-score').text(`${game.players[2].score}`)
       domUpdates.displayWinner();
-    } else if (game.roundNumber >= 2 && game.currentPlayer !== 2){
+    } else if (game.roundNumber >= 2 && game.currentPlayer !== 2) {
       setTimeout(() => {
         $('.answer-validation-container').remove();
         domUpdates.styleCurrentPlayer(game.currentPlayer);
@@ -521,7 +528,9 @@ const domUpdates = {
     } else {
       winner = 'Player 3'
     }
-    $('.game-board').css({ 'display' : 'flex' })
+    $('.game-board').css({
+      'display': 'flex'
+    })
     $('.winner-message-area').html(`<h1 class='winning-message'>${winner} wins!</h1>`);
     $('dd-or-fj-container').remove()
   },
