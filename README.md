@@ -26,7 +26,7 @@ a Jeopardy game with a South Park theme
 - NPM 
 - Chai Spies
 
-### Screenshots and/or .gif
+### Screenshots 
 ![193F1ED5-9384-4935-B94D-A49EA75AA865_1_105_c](https://user-images.githubusercontent.com/49410633/71939608-28afcd00-31ab-11ea-96bc-6169b7fde938.jpeg)
 ![40A66442-43C6-417A-9078-747A31F39034_1_105_c](https://user-images.githubusercontent.com/49410633/71939609-2b122700-31ab-11ea-9443-71912c726c77.jpeg)
 ![DDCB0C3B-B6B2-4C6D-9E57-D441CEE182FE_1_105_c](https://user-images.githubusercontent.com/49410633/71939612-2d748100-31ab-11ea-93a5-2dbe2186d7e4.jpeg)
