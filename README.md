@@ -9,7 +9,7 @@ a Jeopardy game with a South Park theme
 - what is your project about? 
   1. For this project we needed to solidify our understanding of object-oriented programming(OOP) by building out a game show.
 
-- Project Learnbing Goals
+- Project Learning Goals
   
   1. Write a program from scratch
   2. Synthesize knowledge of OOP, classes, and JS fundamentals to create a playable game
@@ -32,6 +32,15 @@ a Jeopardy game with a South Park theme
 ![40A66442-43C6-417A-9078-747A31F39034_1_105_c](https://user-images.githubusercontent.com/49410633/71939609-2b122700-31ab-11ea-9443-71912c726c77.jpeg)
 ![DDCB0C3B-B6B2-4C6D-9E57-D441CEE182FE_1_105_c](https://user-images.githubusercontent.com/49410633/71939612-2d748100-31ab-11ea-93a5-2dbe2186d7e4.jpeg)
 ![5F6321AB-9FDF-4F0E-9B2F-4BA11E3744E2_1_105_c](https://user-images.githubusercontent.com/49410633/71939616-2f3e4480-31ab-11ea-83b7-1f93783ad01c.jpeg)
+
+### How to install and clone
+step 1. clone repo to desired location
+step 2. cd to the direcotry where you cloned the repo
+step 3. run npm install
+step 4. run npm start 
+step 5. look for words "project is running at http://localhost..." and copy this address 
+step 6. open your browser and paste the live server URL into the adress bar
+step 7. ENJOY STARWARS JEOPARDY!!!
 
 ### List of Contributors with links to Github accounts
 - Zachary Nemeroff https://github.com/ZaneMeroff
