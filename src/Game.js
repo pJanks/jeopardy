@@ -25,7 +25,8 @@ class Game {
     round2 = new Round(round2Nums, 2);
     round3 = new Round(round3Nums, 0);
     this.rounds.push(round1, round2, round3);
-    this.instanstiatePlayers($('.player1-input').val(), $('.player2-input').val(), $('.player3-input').val());
+    this.instanstiatePlayers($('.player1-input').val(),
+      $('.player2-input').val(), $('.player3-input').val());
     this.shuffleClues();
     this.instanstiateClues();
   }
@@ -33,20 +34,20 @@ class Game {
   shuffleClues() {
     let j, x, i;
     for (i = this.allClues.length - 1; i > 0; i--) {
-        j = Math.floor(Math.random() * (i + 1));
-        x = this.allClues[i];
-        this.allClues[i] = this.allClues[j];
-        this.allClues[j] = x;
+      j = Math.floor(Math.random() * (i + 1));
+      x = this.allClues[i];
+      this.allClues[i] = this.allClues[j];
+      this.allClues[j] = x;
     }
   }
 
   shuffleAnswers(answers) {
     let j, x, i;
     for (i = answers.length - 1; i > 0; i--) {
-        j = Math.floor(Math.random() * (i + 1));
-        x = this.answers[i];
-        this.answers[i] = this.answers[j];
-        this.answers[j] = x;
+      j = Math.floor(Math.random() * (i + 1));
+      x = this.answers[i];
+      this.answers[i] = this.answers[j];
+      this.answers[j] = x;
     }
     return answers;
   }
@@ -61,12 +62,13 @@ class Game {
     let firstClues;
     this.rounds[this.roundNumber].categories.forEach(category => {
       firstClues = this.allClues.find(clue => {
-        if (category + 1 === clue.categoryId && clue.pointValue === pointValue)
-        return clue
+        if(category + 1 === clue.categoryId && clue.pointValue === pointValue){
+          return clue;
+        }
       })
       this.rounds[this.roundNumber].cluesData.push(firstClues);
-    }
-  )}
+    })
+  }
 
   instanstiateClues() {
     if (this.roundNumber === 2) {
@@ -80,7 +82,8 @@ class Game {
         return a.categoryId - b.categoryId;
       });
       this.rounds[this.roundNumber].cluesData.forEach(clue => {
-        clueObject = new DailyDouble(clue.question, clue.answer, clue.categoryId, clue.pointValue);
+        clueObject = new DailyDouble(clue.question, clue.answer,
+          clue.categoryId, clue.pointValue);
         this.rounds[this.roundNumber].clues.push(clueObject);
       })
     } else {
@@ -94,7 +97,8 @@ class Game {
         return a.categoryId - b.categoryId;
       });
       this.rounds[this.roundNumber].cluesData.forEach(clue => {
-        clueObject = new Clue(clue.question, clue.answer, clue.categoryId, clue.pointValue);
+        clueObject = new Clue(clue.question, clue.answer, clue.categoryId,
+          clue.pointValue);
         this.rounds[this.roundNumber].clues.push(clueObject);
       })
 
