@@ -24,6 +24,8 @@ a Jeopardy game with a South Park theme
 - CSS & SASS
 - vanilla JavaScript
 - jQuery
+- NPM 
+- Chai Spies
 
 ### Screenshots and/or .gif
 ![193F1ED5-9384-4935-B94D-A49EA75AA865_1_105_c](https://user-images.githubusercontent.com/49410633/71939608-28afcd00-31ab-11ea-96bc-6169b7fde938.jpeg)
