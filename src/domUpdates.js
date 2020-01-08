@@ -174,9 +174,11 @@ const domUpdates = {
         });
       })
     } else if (game.currentPlayer < 1 && isDDorFJ === 'Final Jeopardy') {
-      $('.game-board').addClass('hidden')
+      $('.game-board').css({ 'display' : 'none'})
+      $('.game-board').html('')
       if (game.roundNumber === 2 && game.players[game.currentPlayer].score <= 0) {
         $('.question-area').remove();
+        $('.dd-or-fj-container').remove();
        window.alert('You don\'t have enough to play Final Jeopardy');
        game.currentPlayer++;
        domUpdates.displayDDorFJ('Final Jeopardy', 1)
@@ -243,6 +245,7 @@ const domUpdates = {
     }  else if (game.currentPlayer === 1 && isDDorFJ === 'Final Jeopardy') {
       if (game.roundNumber === 2 && game.players[game.currentPlayer].score <= 0) {
         $('.question-area').remove();
+        $('.dd-or-fj-container').remove();
        window.alert('You don\'t have enough to play Final Jeopardy');
        game.currentPlayer++
        domUpdates.displayDDorFJ('Final Jeopardy', 2)
@@ -308,8 +311,9 @@ const domUpdates = {
     } else if (game.currentPlayer === 2 && isDDorFJ === 'Final Jeopardy') {
       if (game.roundNumber === 2 && game.players[game.currentPlayer].score <= 0) {
         $('.question-area').remove();
+        $('.dd-or-fj-container').remove();
+        domUpdates.displayWinner();
        window.alert('You don\'t have enough to play Final Jeopardy');
-       domUpdates.displayWinner();
      }
       $('.wager-button').click(() => {
         let wager;
@@ -364,6 +368,7 @@ const domUpdates = {
             domUpdates.messageFromYoda('Incorrect, your answer is')
             game.players[game.currentPlayer].updateScore(-wager)
           }
+          domUpdates.displayWinner();
           domUpdates.updateScore();
           $('.question-area').remove();
           console.log('hi');
@@ -515,9 +520,17 @@ const domUpdates = {
   },
 
   displayWinner: () => {
-    $('.game-board').html(`<h1>You WIN</h1>`);
+    let winner;
+    if (game.players[0].score > game.players[1].score && game.players[0].score > game.players[2].score) {
+      winner = 'Player 1'
+    } else if (game.players[1].score > game.players[0].score && game.players[1].score > game.players[2].score) {
+      winner = 'Player 2'
+    } else {
+      winner = 'Player 3'
+    }
+    $('.game-board').css({ 'display' : 'flex' })
+    $('.game-board').html(`<h1>${winner} wins</h1>`);
     $('dd-or-fj-container').remove()
-    domUpdates.removeHidden();
   },
 
   validateUserNames: () => {
