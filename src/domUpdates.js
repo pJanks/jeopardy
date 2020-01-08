@@ -224,11 +224,11 @@ const domUpdates = {
             .closest('.light-saber-container').text().toLowerCase().trim();
           if (game.rounds[game.roundNumber].clues[clueIndex]
             .evaluateWager(wager, game.players[game.currentPlayer].answer)) {
-            domUpdates.messageFromYoda('Correct, your answer is')
+            // domUpdates.messageFromYoda('Correct, your answer is')
             game.players[game.currentPlayer].updateScore(wager)
           } else if (!game.rounds[game.roundNumber].clues[clueIndex]
             .evaluateWager(wager, game.players[game.currentPlayer].answer)) {
-            domUpdates.messageFromYoda('Incorrect, your answer is')
+            // domUpdates.messageFromYoda('Incorrect, your answer is')
             game.players[game.currentPlayer].updateScore(-wager)
           }
           domUpdates.updateScore();
@@ -291,11 +291,11 @@ const domUpdates = {
             .closest('.light-saber-container').text().toLowerCase().trim();
           if (game.rounds[game.roundNumber].clues[clueIndex]
             .evaluateWager(wager, game.players[game.currentPlayer].answer)) {
-            domUpdates.messageFromYoda('Correct, your answer is')
+            // domUpdates.messageFromYoda('Correct, your answer is')
             game.players[game.currentPlayer].updateScore(wager)
           } else if (!game.rounds[game.roundNumber].clues[clueIndex]
             .evaluateWager(wager, game.players[game.currentPlayer].answer)) {
-            domUpdates.messageFromYoda('Incorrect, your answer is')
+            // domUpdates.messageFromYoda('Incorrect, your answer is')
             game.players[game.currentPlayer].updateScore(-wager)
           }
           domUpdates.updateScore();
@@ -356,17 +356,16 @@ const domUpdates = {
             .closest('.light-saber-container').text().toLowerCase().trim();
           if (game.rounds[game.roundNumber].clues[clueIndex]
             .evaluateWager(wager, game.players[game.currentPlayer].answer)) {
-            domUpdates.messageFromYoda('Correct, your answer is')
+            // domUpdates.messageFromYoda('Correct, your answer is')
             game.players[game.currentPlayer].updateScore(wager)
           } else if (!game.rounds[game.roundNumber].clues[clueIndex]
             .evaluateWager(wager, game.players[game.currentPlayer].answer)) {
-            domUpdates.messageFromYoda('Incorrect, your answer is')
+            // domUpdates.messageFromYoda('Incorrect, your answer is')
             game.players[game.currentPlayer].updateScore(-wager)
           }
           domUpdates.displayWinner();
           domUpdates.updateScore();
           $('.question-area').remove();
-          console.log('hi');
         });
       })
     }
@@ -464,7 +463,6 @@ const domUpdates = {
     if (!game) {
       game = new Game(dataInfo.categories, dataInfo.clues, nums);
     }
-    console.log(game);
     if (game.roundNumber === 0) {
       game.startGame();
       domUpdates.styleCurrentPlayer(game.currentPlayer);
