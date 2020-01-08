@@ -5,28 +5,36 @@ import Clue from '../src/Clue';
 import Player from '../src/Player';
 import Round from '../src/Round';
 
-describe ('Game', () => {
-let clue;
-let game;
-let roundOne;
-let roundTwo;
-let roundThree;
-let playerOne;
-let playerTwo;
-let playerThree;
+describe('Game', () => {
+  let clue;
+  let game;
+  let roundOne;
+  let roundTwo;
+  let roundThree;
+  let playerOne;
+  let playerTwo;
+  let playerThree;
 
-beforeEach(() => {
-  clue = new Clue('Sound a dog makes', 'bark!!!', 10, 100);
-  game = new Game({'unitedStatesHistory': 1}, clue, [2, 5, 3, 6]);
-  playerOne = new Player('Trond');
-  playerTwo = new Player('Zack');
-  playerThree = new Player('Johnny');
-  roundOne = new Round({'unitedStatesHistory': 1});
-  roundTwo = new Round({'lifeSciences': 2});
-  roundThree = new Round({'publicHealth': 0});
-})
+  beforeEach(() => {
+    clue = new Clue('Sound a dog makes', 'bark!!!', 10, 100);
+    game = new Game({
+      'unitedStatesHistory': 1
+    }, clue, [2, 5, 3, 6]);
+    playerOne = new Player('Trond');
+    playerTwo = new Player('Zack');
+    playerThree = new Player('Johnny');
+    roundOne = new Round({
+      'unitedStatesHistory': 1
+    });
+    roundTwo = new Round({
+      'lifeSciences': 2
+    });
+    roundThree = new Round({
+      'publicHealth': 0
+    });
+  })
 
-describe ('default properties', () => {
+  describe('default properties', () => {
 
     it('should be a function', () => {
       expect(Game).to.be.a('function');
@@ -37,7 +45,9 @@ describe ('default properties', () => {
     })
 
     it('should have game categories', () => {
-      expect(game.gameCategories).to.deep.equal({'unitedStatesHistory': 1});
+      expect(game.gameCategories).to.deep.equal({
+        'unitedStatesHistory': 1
+      });
     })
 
     it('should start off at round 1', () => {
