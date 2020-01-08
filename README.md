@@ -6,8 +6,7 @@ a Jeopardy game with a South Park theme
 - link to DTR gist: https://gist.github.com/ZaneMeroff/7052f8f87f4b51bdddb8ed8161b2b04a
 
 ### Introduction to Project
-- what is your project about? 
-  1. For this project we needed to solidify our understanding of object-oriented programming(OOP) by building out a game show.
+For this project we needed to solidify our understanding of object-oriented programming(OOP) by building out a game show. Our game show is a StarWars themed jeopardy game. The game is developed for 3 players and will have three rounds. For the first 2 rounds players turns will alternate until all clues and questions have been removed from the game board. After the second round players will enter the final jeopardy round where they can make a wager based on the points they have with a final category. All questions and clues are fethced from a live API upon page load.   
 
 - Project Learning Goals
   
@@ -17,6 +16,9 @@ a Jeopardy game with a South Park theme
   4. Write modular, reusable code that follows SRP (Single Responibility Principle)
   5. Create a robust test suite that thoroughly tests all functionality of a client-side application
   6. Implement array iterator and mutator methods to work with game data
+  
+### Acessability 
+- screen readers
 
 ### Technologies Used?
 - HTML
@@ -25,6 +27,7 @@ a Jeopardy game with a South Park theme
 - jQuery
 - NPM 
 - Chai Spies
+- WebPack
 
 ### Screenshots 
 ![193F1ED5-9384-4935-B94D-A49EA75AA865_1_105_c](https://user-images.githubusercontent.com/49410633/71939608-28afcd00-31ab-11ea-96bc-6169b7fde938.jpeg)
